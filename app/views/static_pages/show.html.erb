@@ -1,1 +1,5 @@
 <p>static show page</p>
+<% @cards.each do |c| %>
+  <p><%=c.name %></p>
+  <img src=<%=c.image_url %> />
+<% end %>
