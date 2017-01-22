@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def show
-    @cards = Pokemon::Card.where(set: 'base').where(supertype: 'pokemon').all
+    @card = Pokemon::Card.find('xy7-54')
+    #@cards = Pokemon::Card.where(set: 'base').where(supertype: 'pokemon').all
   end
 end

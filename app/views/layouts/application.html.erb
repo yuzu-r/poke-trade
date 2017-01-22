@@ -7,6 +7,65 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-inverse" id="navbar" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>   
+        <%= link_to 'PokeTrader', root_path, class: 'navbar-brand' %>
+      </div>   
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to 'New Trade', '#' %>
+            </li>
+            <li>
+              <%= link_to 'Trade Manager', '#' %>
+            </li>
+            <li>
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Sign In', new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to 'Sign Up', new_user_registration_path %>
+            </li>
+          <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <p class="navbar-text navbar-right">
+            Hi, <%= current_user.email %>
+          </p>
+        <% end %>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="container">
+    <% if flash[:error].present? %>
+      <div class="col-xs-10 col-xs-offset-1 alert alert-danger">
+        <%= flash[:error].html_safe %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice].present? %>
+      <div class="col-xs-10 col-xs-offset-1 alert alert-info">
+        <%= flash[:notice].html_safe %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert].present? %>
+      <div class="col-xs-10 col-xs-offset-1 alert alert-warning">
+        <%= flash[:alert].html_safe %>
+      </div>
+    <% end %>
+  </div>
 
 <%= yield %>
 
