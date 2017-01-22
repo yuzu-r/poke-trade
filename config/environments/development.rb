@@ -5,10 +5,11 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  config.serve_static_files = false
 
   # Do not eager load code on boot.
   config.eager_load = false
-
+  config.reload_classes_only_on_change = false
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -38,4 +39,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # white list to suppress error in console
+  config.web_console.whitelisted_ips = '10.0.2.2'
+  
 end
