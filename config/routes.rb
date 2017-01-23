@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'static_pages#show'
+  #root 'static_pages#show'
+  resource :cards
+  root 'static_pages#test'
+  get 'collection' => 'cards#fetch_collection'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
