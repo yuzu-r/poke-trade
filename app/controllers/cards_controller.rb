@@ -9,6 +9,10 @@ class CardsController < ApplicationController
   end
 
   def create
+    # receive the name, convert to id for easier storage
+    puts "card params is #{card_params}"
+    card_id = DECK.find{|h| h[:name] === card_params[:name]}[:number]
+    puts "card id is #{card_id}"
   end
 
   def fetch_collection
@@ -20,6 +24,6 @@ class CardsController < ApplicationController
 
   private
     def card_params
-      params.require(:card).permit(:deck, :is_available)
+      params.require(:card).permit(:name)
     end
 end

@@ -18,6 +18,7 @@
 //= require components
 //= require_tree .
 //= require bootstrap-sprockets
+//= require ./vendors/react-autosuggest-v8.0.0.min
 ReactRailsUJS.handleEvent('turbolinks:before-cache', function() {
   window.ReactRailsUJS.unmountComponents();
 });

@@ -8,17 +8,22 @@ var Collection = React.createClass({
     else {
       var cards = this.props.cards.map((c,index) => {
         // also available are c.source and c.is_available
-        console.log(c);
+        // var tradeable = c.available ? 'Tradeable' : 'Not Offered';
         return (
-          <div key={index}>{c.name}</div>
+          <li className='card-container' key={index}>
+            <figure>
+              <img className='scaled' src={c.source} alt='image' />
+              <figcaption>{c.name}</figcaption>
+            </figure>
+          </li>
         );
       });
       return (
         <div>
-          <p>Here is your collection.</p>
-          {cards}
+          <ul className='grid'>
+            {cards}
+          </ul>
         </div>
-
       )     
     }
   }
