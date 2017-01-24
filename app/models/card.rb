@@ -13,7 +13,7 @@ class Card < ActiveRecord::Base
       card_from_deck = DECK.find{|h| h[:number].to_i === c[0]}
       card_hash[:name] = card_from_deck[:name]
       card_hash[:source] = card_from_deck[:source]
-      card_hash[:available] = c[1]
+      card_hash[:is_available] = c[1]
       card_hash[:id] = c[2]
       collection_info.push(card_hash)
     end
@@ -38,7 +38,7 @@ class Card < ActiveRecord::Base
     # returns all cards that are active that do not belong to the user
     # no user is also acceptable, because anyone can see available cards.
     # need to check the transactions for any that have as pending so can show them specially
-    cards = Card.select("deck_id, user_id, id").where(:is_active => true)
+    cards = Card.select("deck_id, user_id, id, is_available").where(:is_active => true)
     cards = user ? cards.where.not(:user_id => user.id) : cards
     pool_info = cards.to_a.map(&:serializable_hash)
     pool_info = pool_info.map(&:symbolize_keys)

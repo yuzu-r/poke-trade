@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   #root 'static_pages#show'
   resource :cards
+  resource :trades, only: [:create, :update, :show]
   root 'static_pages#test'
   get 'my_collection' => 'static_pages#my_collection'
   get 'collection' => 'cards#fetch_collection'

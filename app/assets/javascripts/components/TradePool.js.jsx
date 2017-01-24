@@ -31,6 +31,21 @@ var TradePool = React.createClass({
   },
   beginTrade(card_id){
     console.log('want to trade!', card_id);
+    $.ajax(
+      {
+        url: '/trades',
+        type: 'POST',
+        data: {
+                trade: {proposer_card_id: card_id}
+              },
+        success: (response) => {
+          console.log('trade create?',response);
+        },
+        fail: (response) => {
+          console.log('trade create fail', response.responseText);
+        }
+      }
+    )    
   },
   render(){
     return(

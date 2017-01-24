@@ -15,6 +15,7 @@ class CardsController < ApplicationController
     if new_card.valid?
       render json: {:success => "success", :status_code => "200"}
     else
+      flash[:alert] = 'Trade not created successfully.'
       render json: {:errors => "error!", :status_code => :unprocessable_entity}
     end
   end
