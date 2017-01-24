@@ -46,6 +46,15 @@ var CollectionManager = React.createClass({
       }
     )
   },
+  deleteCard(card_id,e){
+    console.log('removing from trading pool', card_id);
+    $.ajax({ 
+      url: '/cards/',  
+      type: 'DELETE',
+      data: {card: {id: card_id}}, 
+      success(response) { console.log('successfully removed item') } 
+    });     
+  },
   render(){
     return (
       <div>
@@ -53,7 +62,8 @@ var CollectionManager = React.createClass({
         <PickAPoke onAddPokemon={this.addCard} list={this.props.deck}/>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
-                    cards = {this.state.cards} />
+                    cards = {this.state.cards}
+                    deleteMon= {this.deleteCard} />
       </div>
     )
   }

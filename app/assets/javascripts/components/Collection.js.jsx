@@ -7,13 +7,19 @@ var Collection = React.createClass({
     }
     else {
       var cards = this.props.cards.map((c,index) => {
-        // also available are c.source and c.is_available
-        // var tradeable = c.available ? 'Tradeable' : 'Not Offered';
         return (
           <li className='card-container' key={index}>
             <figure>
               <img className='scaled' src={c.source} alt='image' />
-              <figcaption>{c.name}</figcaption>
+              <figcaption>
+                {c.name}
+                <br/>
+                <button 
+                  className='btn btn-link' 
+                  onClick={this.props.deleteMon.bind(null, c.id)}>
+                  Remove from Trade Pool
+                </button>
+              </figcaption>
             </figure>
           </li>
         );

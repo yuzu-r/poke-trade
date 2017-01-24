@@ -19,6 +19,12 @@ class CardsController < ApplicationController
     end
   end
 
+  def destroy
+    Card.destroy(card_params[:id])
+    flash[:notice] = 'Card removed from trading pool.'
+    redirect_to root_path
+  end
+
   def fetch_collection
     # make the api call here because the other one is broken.
     @cards = Card.collection(current_user)
@@ -27,6 +33,6 @@ class CardsController < ApplicationController
 
   private
     def card_params
-      params.require(:card).permit(:name)
+      params.require(:card).permit(:name, :id)
     end
 end
