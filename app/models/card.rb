@@ -20,15 +20,15 @@ class Card < ActiveRecord::Base
     return collection_info.sort_by { |k| k[:name] }
   end
 
-  #def source
-  #  card_from_deck = DECK.find{|h| h[:number].to_i === self.deck_id}
-  #  card_from_deck[:source]
-  #end
+  def source
+    card_from_deck = DECK.find{|h| h[:number].to_i === self.deck_id}
+    card_from_deck[:source]
+  end
 
-  #def name
-  #  card_from_deck = DECK.find{|h| h[:number].to_i === self.deck_id}
-  #  card_from_deck[:name]    
-  #end
+  def name
+    card_from_deck = DECK.find{|h| h[:number].to_i === self.deck_id}
+    card_from_deck[:name]    
+  end
 
   #def is_pending?
   #  # this would be for checking if the card is in any live transactions

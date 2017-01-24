@@ -5,13 +5,7 @@ var Card = React.createClass({
         <figure>
           <img className='scaled' src={this.props.source} alt='image' />
           <figcaption>
-            <span className='pokemon-name'>{this.props.name}</span>
-                <br/>
-                <button 
-                  className='btn btn-link' 
-                  onClick={this.props.deleteMon.bind(null, this.props.id)}>
-                  Remove from Trade Pool
-                </button>           
+            {this.props.children}
           </figcaption>
         </figure>
       </li>

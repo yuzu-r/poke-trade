@@ -29,8 +29,8 @@ var TradePool = React.createClass({
       }
     )    
   },
-  dummyDeleteMon(){
-    console.log('need to reconfigure Collection to not render for trade pool');
+  beginTrade(card_id){
+    console.log('want to trade!', card_id);
   },
   render(){
     return(
@@ -41,7 +41,9 @@ var TradePool = React.createClass({
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
                     cards = {this.state.cards}
-                    deleteMon = {this.dummyDeleteMon} />
+                    >
+          <TradingPoolCaption beginTrade={this.beginTrade}/>
+        </Collection>
       </div>
     )
   }

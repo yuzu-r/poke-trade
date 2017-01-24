@@ -62,8 +62,9 @@ var CollectionManager = React.createClass({
         <PickAPoke onAddPokemon={this.addCard} list={this.props.deck}/>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
-                    cards = {this.state.cards}
-                    deleteMon= {this.deleteCard} />
+                    cards = {this.state.cards}>
+          <DeleteFromPoolCaption deleteMon={this.deleteCard} />            
+        </Collection>
       </div>
     )
   }
