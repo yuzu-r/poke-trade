@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_many :trades_as_proposer, class_name: "Trade", foreign_key: "proposer_id"
   has_many :trades_as_responder, class_name: "Trade", foreign_key: "responder_id"
 
-  def trades
-    trades_as_proposer + trades_as_responder
+  def trade_count()
+    count = trades_as_proposer.count + trades_as_responder.count 
+    return count > 0 ? count : nil
   end
 end

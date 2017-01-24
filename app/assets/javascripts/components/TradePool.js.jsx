@@ -40,6 +40,7 @@ var TradePool = React.createClass({
               },
         success: (response) => {
           console.log('trade create?',response);
+          Turbolinks.visit('/');
         },
         fail: (response) => {
           console.log('trade create fail', response.responseText);

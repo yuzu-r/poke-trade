@@ -22,7 +22,9 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li>
-              <%= link_to 'Trades', '#' %>
+              <%= link_to('#') do %>
+                Trades <span class='badge'><%=current_user.trade_count %></span>
+              <% end %>
             </li>
             <li>
               <%= link_to 'My Collection', my_collection_path %>
