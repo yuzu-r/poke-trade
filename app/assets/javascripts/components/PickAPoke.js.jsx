@@ -1,11 +1,3 @@
-//const list = ['Alpha', 'Anton', 'Beta', 'Ceta'];
-/*
-const list= [{name: 'Alpha', number: '1', source: 'here'},
-             {name: 'Anton', number: '2', source: 'here'},
-             {name: 'Beta', number: '3', source: 'here'},
-             {name: 'Ceta', number: '4', source: 'here'}
-            ];
-*/
 var PickAPoke = React.createClass({
   getInitialState() {
     return (

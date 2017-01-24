@@ -9,14 +9,17 @@ class CardsController < ApplicationController
   end
 
   def create
-    # receive the name, convert to id for easier storage
-    puts "card params is #{card_params}"
+    # receive the name, convert to id
     card_id = DECK.find{|h| h[:name] === card_params[:name]}[:number]
-    puts "card id is #{card_id}"
+    new_card = Card.create(user_id: current_user.id, deck_id: card_id, is_available: true)
+    if new_card.valid?
+      render json: {:success => "success", :status_code => "200"}
+    else
+      render json: {:errors => "error!", :status_code => :unprocessable_entity}
+    end
   end
 
   def fetch_collection
-    #@cards = current_user.cards
     # make the api call here because the other one is broken.
     @cards = Card.collection(current_user)
     render json: {cards: @cards}

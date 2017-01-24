@@ -31,14 +31,14 @@ var CollectionManager = React.createClass({
     )
   },
   addCard(name,e){
-    console.log('adding a new card to the collection',name);
     $.ajax(
       {
         url: '/cards',
         type: 'POST',
         data: {card: {name: name}},
         success: (response) => {
-          console.log(response);
+          console.log('success!', response);
+          Turbolinks.visit('/');
         },
         fail: (response) => {
           console.log('fail', response.responseText);
@@ -47,11 +47,6 @@ var CollectionManager = React.createClass({
     )
   },
   render(){
-    const list= [{name: 'Alpha', number: '1', source: 'here'},
-                 {name: 'Anton', number: '2', source: 'here'},
-                 {name: 'Beta', number: '3', source: 'here'},
-                 {name: 'Ceta', number: '4', source: 'here'}
-                ];   
     return (
       <div>
         <h1>Collection Manager</h1>
