@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'static_pages#test'
   get 'my_collection' => 'static_pages#my_collection'
   get 'collection' => 'cards#fetch_collection'
+  get 'pool' => 'cards#fetch_pool'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
