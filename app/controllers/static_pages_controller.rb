@@ -8,9 +8,10 @@ class StaticPagesController < ApplicationController
   end
   
   def test
-    #render component: 'Pick'
-    #puts "constant #{DECK[0]}"
+    render component: 'TradePool'
+  end
+
+  def my_collection
     render component: 'CollectionManager', props: {deck: DECK}
-    #render component: 'Collection', props: {isLoading: true, loadingMessage: 'hi'}
   end
 end

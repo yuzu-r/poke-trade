@@ -12,7 +12,7 @@ var Collection = React.createClass({
             <figure>
               <img className='scaled' src={c.source} alt='image' />
               <figcaption>
-                {c.name}
+                <span className='pokemon-name'>{c.name}</span>
                 <br/>
                 <button 
                   className='btn btn-link' 

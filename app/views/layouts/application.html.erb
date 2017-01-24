@@ -22,10 +22,10 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li>
-              <%= link_to 'New Trade', '#' %>
+              <%= link_to 'Trades', '#' %>
             </li>
             <li>
-              <%= link_to 'Trade Manager', '#' %>
+              <%= link_to 'My Collection', my_collection_path %>
             </li>
             <li>
               <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
