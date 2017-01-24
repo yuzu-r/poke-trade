@@ -29,12 +29,19 @@ var TradePool = React.createClass({
       }
     )    
   },
+  dummyDeleteMon(){
+    console.log('need to reconfigure Collection to not render for trade pool');
+  },
   render(){
     return(
       <div>
         <h2>Trade Pool</h2>
         <p>{this.state.loadingMessage}</p>
-        <p>The trade pool does not include the pokemon from your own collection.</p>
+        <p>Reminder: the trade pool does not include the pokemon from your own collection if you are signed in.</p>
+        <Collection isLoading={this.state.isLoading} 
+                    loadingMessage={this.state.loadingMessage} 
+                    cards = {this.state.cards}
+                    deleteMon = {this.dummyDeleteMon} />
       </div>
     )
   }

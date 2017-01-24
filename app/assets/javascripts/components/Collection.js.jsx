@@ -8,20 +8,11 @@ var Collection = React.createClass({
     else {
       var cards = this.props.cards.map((c,index) => {
         return (
-          <li className='card-container' key={index}>
-            <figure>
-              <img className='scaled' src={c.source} alt='image' />
-              <figcaption>
-                <span className='pokemon-name'>{c.name}</span>
-                <br/>
-                <button 
-                  className='btn btn-link' 
-                  onClick={this.props.deleteMon.bind(null, c.id)}>
-                  Remove from Trade Pool
-                </button>
-              </figcaption>
-            </figure>
-          </li>
+          <Card key={index}
+                source={c.source}
+                name={c.name}
+                id={c.id}
+                deleteMon={this.props.deleteMon} />
         );
       });
       return (
