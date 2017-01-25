@@ -3,7 +3,7 @@ var TradeContainer = React.createClass({
     return(
       <div>
         <h2>Nothing here? Initiate a trade from the Trading Pool to get started!</h2>
-        <PendingResponseTradesContainer />
+        <PendingResponseContainer />
         <IdleTradesContainer />
       </div>
     )
