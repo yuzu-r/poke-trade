@@ -6,8 +6,12 @@ class StaticPagesController < ApplicationController
       .where(number: '1|2|25')
       .all
   end
-  
+
   def test
+    render component: 'TradeContainer'
+  end
+  
+  def trade_pool
     render component: 'TradePool'
   end
 

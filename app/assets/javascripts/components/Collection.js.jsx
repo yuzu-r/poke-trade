@@ -13,7 +13,7 @@ var Collection = React.createClass({
     else {
       var cards = this.props.cards.map((c,index) => {
         var cardFigCaption = React.cloneElement(this.props.children, 
-                              {name: c.name, id: c.id, isAvailable: c.is_available});
+                              {name: c.name, id: c.id, isAvailable: c.is_available, trade_id: c.trade_id});
         return (
           <Card key={index}
                 source={c.source}

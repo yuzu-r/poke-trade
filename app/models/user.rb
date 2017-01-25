@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :trades_as_responder, class_name: "Trade", foreign_key: "responder_id"
 
   def trade_count()
-    count = trades_as_proposer.count + trades_as_responder.count 
+    count = trades_as_proposer.where(status: 'pending').count + trades_as_responder.where(status: 'pending').count 
     return count > 0 ? count : nil
   end
 end

@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
   belongs_to :user
-
+    
   scope :offered, -> {select('id, deck_id, user_id')
                         .where('is_available = true and is_active = true')}
 
@@ -30,10 +30,6 @@ class Card < ActiveRecord::Base
     card_from_deck[:name]    
   end
 
-  #def is_pending?
-  #  # this would be for checking if the card is in any live transactions
-  #end
-
   def self.trade_pool(user = nil)
     # returns all cards that are active that do not belong to the user
     # no user is also acceptable, because anyone can see available cards.
@@ -48,5 +44,20 @@ class Card < ActiveRecord::Base
       c[:name] = card_from_deck[:name]
     end
     return pool_info.sort_by {|k| k[:name]}
+  end
+
+  def self.idle_trades(user)
+    # these are cards where the user is the proposer and is awaiting a response
+    trades = user.trades_as_proposer.select('cards.deck_id, responder_id, trades.id as trade_id')
+              .joins('inner join cards on cards.id = proposer_card_id')
+              .where(status: 'pending')
+    trades_info = trades.to_a.map(&:serializable_hash)
+    trades_info = trades_info.map(&:symbolize_keys)
+    trades_info.each do |t|
+      card_from_deck = DECK.find{|h| h[:number].to_i === t[:deck_id]}
+      t[:source] = card_from_deck[:source]
+      t[:name] = card_from_deck[:name]
+      puts "#{t}"
+    end
   end
 end
