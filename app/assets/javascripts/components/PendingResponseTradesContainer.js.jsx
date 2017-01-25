@@ -1,4 +1,35 @@
 var PendingResponseTradesContainer = React.createClass({
+  getInitialState: function(){
+    return (
+      {
+        cards: [],
+        loadingMessage: 'You have no trades awaiting a response.'
+      }
+    )
+  },
+  componentDidMount() {
+    console.log('fetching idle trades from server');
+    $.ajax(
+      {
+        url: '/pending',
+        type: 'GET',
+        success: (response) => {
+          console.log('what response?',response);
+          console.log(response.cards);
+          var cardCount = response.cards.length;
+          if (cardCount === 0) {
+            this.setState({isLoading: false, loadingMessage: ''})
+          }
+          else {
+            this.setState({isLoading: false, cards: response.cards, loadingMessage: ''});
+          }
+        },
+        fail: (response) => {
+          console.log('fail', response.responseText);
+        }
+      }
+    )    
+  },
   render(){
     return(
       <div className='container col-xs-10 col-xs-offset-1'>
@@ -7,7 +38,11 @@ var PendingResponseTradesContainer = React.createClass({
             <h3 className='panel-title'>Trades awaiting your response</h3>
           </div>
           <div className='panel-body'>
-            Here are trades that traders have proposed to you. Choose a card from the trader to close the deal, or reject the deal to allow your card back into the main trading pool.
+            <Collection isLoading={this.state.isLoading} 
+                    loadingMessage={this.state.loadingMessage} 
+                    cards = {this.state.cards}>
+              <PendingResponseTradesCaption cancelTrade={this.cancelTrade} />
+            </Collection>
           </div>
         </div>
       </div>

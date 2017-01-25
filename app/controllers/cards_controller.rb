@@ -42,6 +42,11 @@ class CardsController < ApplicationController
     render json: {cards: @cards}
   end
 
+  def fetch_pending
+    @cards = Card.action_pending(current_user)
+    render json: {cards: @cards}
+  end
+
   private
     def card_params
       params.require(:card).permit(:name, :id)

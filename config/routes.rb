@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'collection' => 'cards#fetch_collection' # for the component
   get 'pool' => 'cards#fetch_pool' # for the component
   get 'idle' => 'cards#fetch_idle' # for the component
+  get 'pending' => 'cards#fetch_pending' # for the component
   patch 'cancel_trade' => 'trades#cancel_trade' # for component
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
