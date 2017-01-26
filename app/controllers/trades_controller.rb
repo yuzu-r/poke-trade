@@ -1,5 +1,5 @@
 class TradesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :cancel_trade, :fetch_pending_trades]
+  before_action :authenticate_user!, only: [:create, :update, :cancel_trade, :fetch_pending_trades, :accept_trade]
 
   def create
     desired_card = Card.find(create_trade_params[:proposer_card_id])
@@ -29,10 +29,19 @@ class TradesController < ApplicationController
 
   def fetch_pending_trades
     # get the trades that current user has an action to take (they are responding to trade)
-    # for each trade, they need to see the proposer's available cards
-    # this can be got from Card.collection(t.proposer)
     trades = Trade.bundle(current_user)
     render json: {trades: trades}
+  end
+
+  def accept_trade
+    accept_trade = accept_trade_params.merge(user: current_user)
+    puts "params going to model: #{accept_trade}"
+    trade = Trade.accept(accept_trade)
+    if trade
+      render json:{:success => "success", :status_code => "200"}
+    else
+      render json: {:errors => "error!", :status_code => :unprocessable_entity}      
+    end
   end
 
   private
@@ -43,5 +52,9 @@ class TradesController < ApplicationController
     def cancel_trade_params
       # can the same method be used regardless of whether user is proposer or responder?
       params.require(:trade).permit(:trade_id).merge(user_id: current_user.id)
+    end
+
+    def accept_trade_params
+      params.require(:trade).permit(:trade_id, :responder_card_id)
     end
 end

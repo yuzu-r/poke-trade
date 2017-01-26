@@ -1,4 +1,3 @@
-// props.trades has cards array, proposer_card_id, proposer_id
 var PanelWrapper=React.createClass({
   render: function(){
     var self = this;
@@ -13,6 +12,7 @@ var PanelWrapper=React.createClass({
           <Test cards={trade.cards} 
                 tradeId={trade.id} 
                 cancelTrade={self.props.cancelTrade}
+                desiredCard={trade.proposer_card_id}
                  />
         </PanelItem>);
     });   

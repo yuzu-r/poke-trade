@@ -28,6 +28,29 @@ class Trade < ActiveRecord::Base
     end
   end
 
+  def self.accept(accept_trade_params)
+    puts "in Trade.accept, #{accept_trade_params}"
+    trade = Trade.find(accept_trade_params[:trade_id])
+    if trade
+      if accept_trade_params[:user] == trade.responder ||
+        accept_trade_params[:user] == trade.proposer
+        trade.update_attributes(status: 'accepted', 
+          responder_card_id: accept_trade_params[:responder_card_id])
+        proposer_card = Card.find(trade.proposer_card_id)
+        responder_card = Card.find(accept_trade_params[:responder_card_id])
+        proposer_card.update_attributes(is_available: false, is_active: false)
+        responder_card.update_attributes(is_available: false, is_active: false)
+        return true
+      else
+        # user is not valid for this trade
+        return false
+      end
+    else
+      # can't find trade_id
+      return false
+    end
+  end
+
   def self.bundle (responder)
     # get the trades that user has an action to take (they are responding to trade)
     # for each trade, they need to see the proposer's available cards
@@ -44,4 +67,5 @@ class Trade < ActiveRecord::Base
     end
     return trade_bundle
   end
+
 end

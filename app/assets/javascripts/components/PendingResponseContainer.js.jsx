@@ -25,14 +25,14 @@ var PendingResponseContainer = React.createClass({
     )    
   },
   cancelTrade(tradeId) {
-    console.log('cancelling a trade', tradeId);
+    //console.log('cancelling a trade', tradeId);
     $.ajax(
       {
         url: '/cancel_trade',
         type: 'PATCH',
         data: {trade: {trade_id: tradeId}},
         success: (response) => {
-          console.log('what response?',response);
+          //console.log('what response?',response);
           if (response.success) {
             Turbolinks.visit('/');
           }
