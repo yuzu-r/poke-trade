@@ -27,4 +27,21 @@ class Trade < ActiveRecord::Base
       return false
     end
   end
+
+  def self.bundle (responder)
+    # get the trades that user has an action to take (they are responding to trade)
+    # for each trade, they need to see the proposer's available cards
+    # this can be got from Card.collection(t.proposer)    
+    trades = responder.trades_as_responder
+              .select('id, proposer_id,proposer_card_id').where(status: 'pending')
+    trade_bundle = []
+    trades.each do |t|
+      cards = Card.collection(t.proposer)
+      trade_info = t.as_json
+      trade_info[:cards] = cards
+      trade_bundle.push(trade_info)
+      puts "trade_info is #{trade_info}"
+    end
+    return trade_bundle
+  end
 end

@@ -14,8 +14,8 @@ var IdleTradesContainer = React.createClass({
         url: '/idle',
         type: 'GET',
         success: (response) => {
-          console.log('what response?',response);
-          console.log(response.cards);
+          //console.log('what response?',response);
+          //console.log(response.cards);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false, loadingMessage: ''})
@@ -52,9 +52,9 @@ var IdleTradesContainer = React.createClass({
   render(){
     return(
       <div className='container col-xs-10 col-xs-offset-1'>
-        <div className='panel panel-default'>
+        <div className='panel panel-success'>
           <div className='panel-heading'>
-            <h3 className='panel-title'>Awaiting answers from other traders</h3>
+            <h3 className='panel-title'>Awaiting responses from other traders</h3>
           </div>
           <div className='panel-body'>
             <Collection isLoading={this.state.isLoading} 

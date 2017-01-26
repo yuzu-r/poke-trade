@@ -1,5 +1,5 @@
 class TradesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :cancel_trade]
+  before_action :authenticate_user!, only: [:create, :update, :cancel_trade, :fetch_pending_trades]
 
   def create
     desired_card = Card.find(create_trade_params[:proposer_card_id])
@@ -25,6 +25,14 @@ class TradesController < ApplicationController
     else
       render json: {:errors => "error!", :status_code => :unprocessable_entity}
     end
+  end
+
+  def fetch_pending_trades
+    # get the trades that current user has an action to take (they are responding to trade)
+    # for each trade, they need to see the proposer's available cards
+    # this can be got from Card.collection(t.proposer)
+    trades = Trade.bundle(current_user)
+    render json: {trades: trades}
   end
 
   private

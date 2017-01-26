@@ -1,10 +1,19 @@
+// props.trades has cards array, proposer_card_id, proposer_id
 var PanelWrapper=React.createClass({
   render: function(){
-    var content = this.props.content;
-    console.log('should be cards: ',this.props.content)
-    var els = this.props.content.map(function(item,index){
-      console.log('in else', item.name)
-      return(<PanelItem key={index} title={item.name} content={'stuff here'} index={index}/>)
+    var self = this;
+    var trades = this.props.trades;
+    //var test = trades.map(function(t, index){
+    //  console.log(t.proposer_card_id, index);
+    //})
+    var els = trades.map(function(trade,index){
+      return(
+        <PanelItem  key={index} 
+                    desiredCard={trade.proposer_card_id} 
+                    proposerName={trade.proposer_id}
+                    index={index}>
+          <Test cards={trade.cards}/>
+        </PanelItem>);
     });   
     return(
       <div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

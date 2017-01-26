@@ -1,14 +1,13 @@
 var PanelItem=React.createClass({
   getDefaultProps: function(){
     return(
-      {title: 'hi', content:'arma virumque cano', index: 1}
+      {title: 'hi', index: 1}
     )
   },
   render: function(){
     var idH = 'ap-heading-' + this.props.index;
     var idC = 'ap-collapse-' + this.props.index;
     var hrefC = '#' + idC;
-    console.log('in panelItem, props', this.props.name)
     return(
       <div className="panel panel-default">
         <div className="panel-heading" role="tab" id={idH}>
@@ -19,13 +18,13 @@ var PanelItem=React.createClass({
               href={hrefC} 
               aria-expanded="false" 
               aria-controls="collapseF">
-              THIS IS {this.props.title}
+              {this.props.proposerName} wants {this.props.desiredCard}
             </a>
           </h4>
         </div>
         <div id={idC} className="panel-collapse collapse" role="tabpanel" aria-labelledby={idH}>
           <div className="panel-body">
-            {this.props.content}
+            {this.props.children}
           </div>        
         </div>
       </div>
