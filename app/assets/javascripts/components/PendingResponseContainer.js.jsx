@@ -15,13 +15,33 @@ var PendingResponseContainer = React.createClass({
         type: 'GET',
         success: (response) => {
           //console.log('important response?',response);
-          this.setState({trades: response.trades});
+          this.setState({trades: response.trades}); 
+
         },
         fail: (response) => {
           console.log('fail', response.responseText);
         }
       }
     )    
+  },
+  cancelTrade(tradeId) {
+    console.log('cancelling a trade', tradeId);
+    $.ajax(
+      {
+        url: '/cancel_trade',
+        type: 'PATCH',
+        data: {trade: {trade_id: tradeId}},
+        success: (response) => {
+          console.log('what response?',response);
+          if (response.success) {
+            Turbolinks.visit('/');
+          }
+        },
+        fail: (response) => {
+          console.log('fail', response.responseText);
+        }
+      }
+    )   
   },
   render(){
     return(
@@ -31,7 +51,7 @@ var PendingResponseContainer = React.createClass({
             <h3 className='panel-title'>Trades awaiting your response</h3>
           </div>
           <div className='panel-body'>
-            <PanelWrapper trades={this.state.trades} />
+            <PanelWrapper trades={this.state.trades} cancelTrade={this.cancelTrade} />
           </div>
         </div>
       </div>

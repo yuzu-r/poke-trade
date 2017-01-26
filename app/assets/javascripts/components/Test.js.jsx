@@ -9,7 +9,12 @@ var Test = React.createClass({
     });  
     return (
       <div>
-        <p>Select one of these or cancel</p>
+        <p>Select one of these or
+          <button className='btn btn-link'
+                  onClick={this.props.cancelTrade.bind(null, this.props.tradeId)}>                
+            cancel trade
+          </button>
+        </p>
         <div className="row">
           {els}
         </div>   
