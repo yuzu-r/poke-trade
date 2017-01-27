@@ -13,12 +13,6 @@
     </div>
 
     <div class="field">
-      <%= f.label :username %><em> (20 characters maximum)</em>
-      <br/>
-      <%= f.text_field :username %>
-    </div>
-
-    <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -31,6 +25,21 @@
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
     <br/>
+
+    <div class="public-profile-entry">
+      <h4>The following will be viewable to the public: </h4>
+      <div class="field">
+        <%= f.label :username %><em> (20 characters maximum)</em>
+        <br/>
+        <%= f.text_field :username %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Share something about yourself or your favorite pokemon' %><em> (250 characters maximum)</em>
+        <br/>
+        <%= f.text_area :bio, cols: 40, rows: 7 %>
+      </div>
+    </div>
     <div class="actions">
       <%= f.submit "Sign up", class: 'btn btn-primary' %>
     </div>
