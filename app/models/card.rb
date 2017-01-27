@@ -6,18 +6,15 @@ class Card < ActiveRecord::Base
 
   def self.collection(user)
     # returns only cards that the user owns (active)
-    cards = user.cards.where(:is_active => true).pluck(:deck_id, :is_available, :id)
-    collection_info = []
-    cards.each do |c|
-      card_hash = {}
-      card_from_deck = DECK.find{|h| h[:number].to_i === c[0]}
-      card_hash[:name] = card_from_deck[:name]
-      card_hash[:source] = card_from_deck[:source]
-      card_hash[:is_available] = c[1]
-      card_hash[:id] = c[2]
-      collection_info.push(card_hash)
+    cards = user.cards.select('deck_id, is_available, id, user_id').where(:is_active => true)
+    card_info = cards.as_json
+    card_info.each do |c|
+      card_from_deck = DECK.find{|h| h[:number].to_i === c["deck_id"]}
+      c[:source] = card_from_deck[:source]
+      c[:name] = card_from_deck[:name]
+      c[:owner] = user.username
     end
-    return collection_info.sort_by { |k| k[:name] }
+    return card_info.sort_by {|k| k[:name]}
   end
 
   def source
