@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
-  #root 'static_pages#show'
+  devise_for :users, :path_prefix => 'devise'
+  resources :users, only:[:show]
+
+
   resource :cards
   resource :trades, only: [:create, :update, :show]
   root 'static_pages#trade_pool'
