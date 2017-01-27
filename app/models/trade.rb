@@ -59,6 +59,8 @@ class Trade < ActiveRecord::Base
       cards = Card.collection(t.proposer)
       trade_info = t.as_json
       trade_info[:cards] = cards
+      trade_info[:proposerName] = User.find(t.proposer.id).username
+      trade_info[:desiredCardName] = DECK.find{|h| h[:number].to_i === t[:proposer_card_id]}[:name]
       trade_bundle.push(trade_info)
       puts "trade_info is #{trade_info}"
     end

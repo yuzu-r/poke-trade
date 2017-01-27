@@ -1,5 +1,4 @@
 var Collection = React.createClass({
-  
   /*
     always passing the card's name, id and is_available to children
   */
@@ -13,12 +12,19 @@ var Collection = React.createClass({
     else {
       var cards = this.props.cards.map((c,index) => {
         var cardFigCaption = React.cloneElement(this.props.children, 
-                              {name: c.name, id: c.id, isAvailable: c.is_available, trade_id: c.trade_id});
+                {name: c.name, 
+                  id: c.id, 
+                  isAvailable: 
+                  c.is_available, 
+                  trade_id: c.trade_id, 
+                  owner: c.owner
+                });
         return (
           <Card key={index}
                 source={c.source}
                 name={c.name}
-                id={c.id} >
+                id={c.id}
+          >
             {cardFigCaption}
           </Card>
         );
