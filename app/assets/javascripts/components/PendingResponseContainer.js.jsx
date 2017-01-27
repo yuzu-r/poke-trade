@@ -8,7 +8,7 @@ var PendingResponseContainer = React.createClass({
     )
   },
   componentDidMount() {
-    console.log('fetching pending trades from server');
+    //console.log('fetching pending trades from server');
     $.ajax(
       {
         url: '/active_trades',

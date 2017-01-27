@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
       .all
   end
 
-  def test
+  def trade_viewer
     render component: 'TradeContainer'
   end
   

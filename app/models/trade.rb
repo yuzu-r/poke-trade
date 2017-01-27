@@ -5,8 +5,6 @@ class Trade < ActiveRecord::Base
 
   def self.cancel(cancel_trade_params)
     trade = Trade.find(cancel_trade_params[:trade_id])
-    puts "#{trade}"
-    puts "#{cancel_trade_params[:user_id]}"
     if trade
       if cancel_trade_params[:user_id] == trade.responder_id || 
         cancel_trade_params[:user_id] == trade.proposer_id
@@ -29,7 +27,6 @@ class Trade < ActiveRecord::Base
   end
 
   def self.accept(accept_trade_params)
-    puts "in Trade.accept, #{accept_trade_params}"
     trade = Trade.find(accept_trade_params[:trade_id])
     if trade
       if accept_trade_params[:user] == trade.responder ||

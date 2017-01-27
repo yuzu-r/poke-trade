@@ -9,8 +9,6 @@ var Test = React.createClass({
     )
   },
   acceptTrade(){
-    console.log('gogogo');
-    //params.require(:trade).permit(:trade_id, :responder_card_id)
     var desiredCard = this.state.tradeFor;
     var tradeId = this.state.tradeId;
     $.ajax(
@@ -19,7 +17,6 @@ var Test = React.createClass({
         type: 'PATCH',
         data: {trade: {trade_id: tradeId, responder_card_id: desiredCard}},
         success: (response) => {
-          console.log('what response to accept?',response);
           if (response.success) {
             Turbolinks.visit('/');
           }
@@ -37,7 +34,6 @@ var Test = React.createClass({
       tradeConfirmationMsg: msg,
       tradeFor: cardId,
       tradeId: tradeId
-
     });
   },
   hideTradeConfirmation(){
@@ -48,7 +44,6 @@ var Test = React.createClass({
     })
   },
   render(){
-    console.log('test, props', this.props);
     var els = null;
     var self = this;
     els = this.props.cards.map(function(c, index){

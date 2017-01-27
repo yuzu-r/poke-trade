@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   #root 'static_pages#show'
   resource :cards
   resource :trades, only: [:create, :update, :show]
-  root 'static_pages#test'
+  root 'static_pages#trade_pool'
+  get 'my_trades' => 'static_pages#trade_viewer' #for people
   get 'my_collection' => 'static_pages#my_collection' #for people
   get 'trade_pool' => 'static_pages#trade_pool' #for people
   get 'collection' => 'cards#fetch_collection' # for the component

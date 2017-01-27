@@ -8,7 +8,7 @@ var IdleTradesContainer = React.createClass({
     )
   },
   componentDidMount() {
-    console.log('fetching idle trades from server');
+    //console.log('fetching idle trades from server');
     $.ajax(
       {
         url: '/idle',
