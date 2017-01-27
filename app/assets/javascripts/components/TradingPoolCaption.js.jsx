@@ -8,9 +8,12 @@ var TradingPoolCaption = React.createClass({
                         Initiate Trade
                       </button>;
     }
+    var ownerLink = '/users/' + this.props.ownerId;
     return (
       <div>
-        <span className='pokemon-name'>{this.props.name} (Trader {this.props.owner})</span>
+        <span className='pokemon-name'>
+          {this.props.name} (offered by Trader <a href={ownerLink}>{this.props.owner}</a>)
+        </span>
         <br/>
         {tradeElement}
       </div>
