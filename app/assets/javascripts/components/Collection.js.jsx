@@ -1,4 +1,9 @@
 var Collection = React.createClass({
+  
+  /*
+    always passing the card's name, id and is_available to children
+  */
+  
   render(){
     if (this.props.isLoading === true) {
       return (
@@ -7,21 +12,15 @@ var Collection = React.createClass({
     }
     else {
       var cards = this.props.cards.map((c,index) => {
+        var cardFigCaption = React.cloneElement(this.props.children, 
+                              {name: c.name, id: c.id, isAvailable: c.is_available, trade_id: c.trade_id});
         return (
-          <li className='card-container' key={index}>
-            <figure>
-              <img className='scaled' src={c.source} alt='image' />
-              <figcaption>
-                <span className='pokemon-name'>{c.name}</span>
-                <br/>
-                <button 
-                  className='btn btn-link' 
-                  onClick={this.props.deleteMon.bind(null, c.id)}>
-                  Remove from Trade Pool
-                </button>
-              </figcaption>
-            </figure>
-          </li>
+          <Card key={index}
+                source={c.source}
+                name={c.name}
+                id={c.id} >
+            {cardFigCaption}
+          </Card>
         );
       });
       return (

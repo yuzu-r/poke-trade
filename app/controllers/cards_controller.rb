@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :create, :destroy, :update, :fetch_collection]
+  before_action :authenticate_user!, only: [:show, :create, :destroy, :update, :fetch_collection, :fetch_idle]
   def show
     @cards = current_user.cards
   end
@@ -15,6 +15,7 @@ class CardsController < ApplicationController
     if new_card.valid?
       render json: {:success => "success", :status_code => "200"}
     else
+      flash[:alert] = 'Trade not created successfully.'
       render json: {:errors => "error!", :status_code => :unprocessable_entity}
     end
   end
@@ -28,6 +29,21 @@ class CardsController < ApplicationController
   def fetch_collection
     # make the api call here because the other one is broken.
     @cards = Card.collection(current_user)
+    render json: {cards: @cards}
+  end
+
+  def fetch_pool
+    @cards = Card.trade_pool(current_user)
+    render json: {cards: @cards}
+  end
+
+  def fetch_idle
+    @cards = Card.idle_trades(current_user)
+    render json: {cards: @cards}
+  end
+
+  def fetch_pending
+    @cards = Card.action_pending(current_user)
     render json: {cards: @cards}
   end
 
