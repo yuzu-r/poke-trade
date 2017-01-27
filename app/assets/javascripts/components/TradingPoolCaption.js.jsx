@@ -9,7 +9,7 @@ var TradingPoolCaption = React.createClass({
     }
     return (
       <div>
-        <span className='pokemon-name'>{this.props.name}</span>
+        <span className='pokemon-name'>{this.props.name} (Trader {this.props.owner})</span>
         <br/>
         {tradeElement}
       </div>

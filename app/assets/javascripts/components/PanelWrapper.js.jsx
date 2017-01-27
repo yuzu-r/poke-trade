@@ -3,6 +3,7 @@ var PanelWrapper=React.createClass({
     var self = this;
     var trades = this.props.trades;
     var els = trades.map(function(trade,index){
+      console.log('panel wrapper trade:', trade);
       return(
         <PanelItem  key={index} 
                     desiredCard={trade.proposer_card_id} 

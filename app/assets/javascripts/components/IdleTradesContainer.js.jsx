@@ -8,14 +8,13 @@ var IdleTradesContainer = React.createClass({
     )
   },
   componentDidMount() {
-    //console.log('fetching idle trades from server');
     $.ajax(
       {
         url: '/idle',
         type: 'GET',
         success: (response) => {
           //console.log('what response?',response);
-          //console.log(response.cards);
+          console.log('idle trade contaier',response.cards);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false, loadingMessage: ''})

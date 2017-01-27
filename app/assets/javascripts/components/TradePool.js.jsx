@@ -13,8 +13,8 @@ var TradePool = React.createClass({
         url: '/pool',
         type: 'GET',
         success: (response) => {
-          console.log('what response?',response);
-          console.log(response.cards);
+          //console.log('what response from pool?',response);
+          //console.log(response.cards);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false, loadingMessage: ''})

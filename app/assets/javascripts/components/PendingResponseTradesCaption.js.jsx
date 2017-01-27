@@ -1,6 +1,6 @@
 var PendingResponseTradesCaption = React.createClass({
   render(){
-    console.log('props!',this.props);
+    console.log('pending trades captionprops!',this.props);
     var tradeElement =  <button className='btn btn-link' 
                         >
                           Cancel Trade

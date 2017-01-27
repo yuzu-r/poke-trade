@@ -39,6 +39,7 @@ class Card < ActiveRecord::Base
       card_from_deck = DECK.find{|h| h[:number].to_i === c[:deck_id]}
       c[:source] = card_from_deck[:source]
       c[:name] = card_from_deck[:name]
+      c[:owner] = User.find(c[:user_id]).username
     end
     return pool_info.sort_by {|k| k[:name]}
   end
@@ -54,6 +55,7 @@ class Card < ActiveRecord::Base
       card_from_deck = DECK.find{|h| h[:number].to_i === t[:deck_id]}
       t[:source] = card_from_deck[:source]
       t[:name] = card_from_deck[:name]
+      t[:owner] = User.find(t[:responder_id]).username
     end
   end
 
