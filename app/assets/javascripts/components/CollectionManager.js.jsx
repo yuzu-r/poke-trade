@@ -38,7 +38,7 @@ var CollectionManager = React.createClass({
         data: {card: {name: name}},
         success: (response) => {
           console.log('success!', response);
-          Turbolinks.visit('/');
+          Turbolinks.visit('/my_collection');
         },
         fail: (response) => {
           console.log('fail', response.responseText);
