@@ -17,6 +17,7 @@ gem 'devise'
 gem 'react-rails'
 
 gem 'pokemon_tcg_sdk'
+gem 'city-state'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

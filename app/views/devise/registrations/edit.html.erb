@@ -12,12 +12,6 @@
       <%= f.email_field :email, autofocus: true %>
     </div>
 
-    <div class="field">
-      <%= f.label :username %><em> (20 characters maximum)</em>
-      <br/>
-      <%= f.text_field :username %>
-    </div>
-
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
@@ -30,6 +24,37 @@
     <div class="field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="public-profile-entry">
+      <h4>The following will be viewable to the public: </h4>
+      <div class="field">
+        <%= f.label :username %><em> (20 characters maximum)</em>
+        <br/>
+        <%= f.text_field :username %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %>
+        <br/>
+        <%= f.text_field :city %>
+      </div>
+
+      <div class="field">
+        <%= f.label :state %>
+        <%= f.select :state, CS.states(:us).values, :include_blank => true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :country %>
+        <%= f.select :country, CS.get.values, :selected => 'United States', :include_blank => true %>
+      </div>
+
+      <div class="field">
+        <%= f.label 'Share something about yourself or your favorite pokemon' %><em> (250 characters maximum)</em>
+        <br/>
+        <%= f.text_area :bio, cols: 40, rows: 7 %>
+      </div>
     </div>
 
     <div class="field">
@@ -51,3 +76,30 @@
   <%= link_to "Back", :back %>
   <br/>
 </div>
+
+<script>
+  $('select[name="user[country]').change(function(){
+    var countryName = $(this).val();
+    var elUserState = $('#user_state');
+    if (countryName === '') {
+      elUserState.empty();
+    }
+    else {
+      $.getJSON('/states/' + countryName,
+        function(response) {
+          var states = response.states;       
+          elUserState.empty();
+          if (states.length == 0) {
+          }
+          else{
+            for (var i=0; i < states.length; i++) {
+              s = states[i];
+              var option = '<option value="' + s + '">' + s + '</option>';
+              elUserState.append(option);
+            }
+          }
+        }
+      );
+    }
+  });
+</script>

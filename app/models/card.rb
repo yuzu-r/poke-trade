@@ -46,7 +46,7 @@ class Card < ActiveRecord::Base
 
   def self.idle_trades(user)
     # these are cards where the user is the proposer and is awaiting a response
-    trades = user.trades_as_proposer.select('cards.deck_id, responder_id, trades.id as trade_id')
+    trades = user.trades_as_proposer.select('cards.deck_id, responder_id as user_id, trades.id as trade_id')
               .joins('inner join cards on cards.id = proposer_card_id')
               .where(status: 'pending')
     trades_info = trades.to_a.map(&:serializable_hash)
@@ -55,7 +55,7 @@ class Card < ActiveRecord::Base
       card_from_deck = DECK.find{|h| h[:number].to_i === t[:deck_id]}
       t[:source] = card_from_deck[:source]
       t[:name] = card_from_deck[:name]
-      t[:owner] = User.find(t[:responder_id]).username
+      t[:owner] = User.find(t[:user_id]).username
     end
   end
 

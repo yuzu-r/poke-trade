@@ -1,10 +1,6 @@
 class StaticPagesController < ApplicationController
   def show
-    @card = Pokemon::Card.find('xy7-54')
-    @cards = Pokemon::Card.where(set: 'Base Set 2')
-      .where(supertype: 'pokemon')
-      .where(number: '1|2|25')
-      .all
+    #@card = Pokemon::Card.find('xy7-54')
   end
 
   def trade_viewer

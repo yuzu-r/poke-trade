@@ -1,5 +1,6 @@
 var Card = React.createClass({
   render(){
+    console.log('card:', this.props)
     return(
       <li className='card-container'>
         <figure>

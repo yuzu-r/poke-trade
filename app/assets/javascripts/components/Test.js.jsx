@@ -63,6 +63,7 @@ var Test = React.createClass({
                             hideTradeConfirmation={this.hideTradeConfirmation}
                             acceptTrade={this.acceptTrade}/> 
     }
+    var traderLink = "/users/" + this.props.proposerId;
     return (
       <div>
         <p>Select one of these pokemon to complete the trade, or
@@ -71,6 +72,7 @@ var Test = React.createClass({
             cancel the trade
           </button>.
         </p>
+        <p><a href={traderLink}>view trader's profile</a></p>
         {tradeConfirmation}
         <div className="row">
           {els}

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  #root 'static_pages#show'
+  devise_for :users, :path_prefix => 'devise'
+  resources :users, only:[:show]
+
   resource :cards
   resource :trades, only: [:create, :update, :show]
   root 'static_pages#trade_pool'
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
   patch 'cancel_trade' => 'trades#cancel_trade' # for component
   get 'active_trades' => 'trades#fetch_pending_trades' # for component
   patch 'accept' => 'trades#accept_trade' # for component
+  get 'states/:country' => 'application#state_list'
 end

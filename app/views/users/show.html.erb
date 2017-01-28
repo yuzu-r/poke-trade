@@ -1,0 +1,9 @@
+<h3>Trader Profile: <%= @user.username %></h3>
+<p> Location: <%= @user.city %> <%= @user.state %> <%= @user.country %>
+<p><%= @user.bio %></p>
+Trading since <%= @user.created_at %>
+Last seen: <%= time_ago_in_words(@user.updated_at) %> ago.
+
+<p>
+  <%= pluralize(@user.accepted_trades_count, 'trade') %> successfully completed.
+</p>
