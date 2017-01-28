@@ -1,11 +1,2 @@
 <p>static show page</p>
 
-<p><%=@card.name %></p>
-<img src=<%=@card.image_url %> />
-
-<h4>There are <%= @cards.count %> cards in this deck. </h4>
-<% @cards.each do |c| %>
-  <p>id: <%=c.id %> name: <%=c.name %> number: <%=c.number %> </p>
-  <img src=<%=c.image_url %> />  <span><%=c.image_url %></span>
-<% end %>
-
