@@ -1,6 +1,6 @@
 var TradingPoolCaption = React.createClass({
   render(){
-    console.log('trading pool caption',this.props);
+    //console.log('trading pool caption',this.props);
     var tradeElement = 'Trade Pending!';
     if (this.props.isAvailable) {
       tradeElement =  <button className='btn btn-link' 

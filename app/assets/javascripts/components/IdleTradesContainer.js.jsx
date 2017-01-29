@@ -14,7 +14,7 @@ var IdleTradesContainer = React.createClass({
         type: 'GET',
         success: (response) => {
           //console.log('what response?',response);
-          console.log('idle trade contaier',response.cards);
+          //console.log('idle trade contaier',response.cards);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false, loadingMessage: ''})

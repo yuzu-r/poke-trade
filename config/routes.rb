@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   get 'active_trades' => 'trades#fetch_pending_trades' # for component
   patch 'accept' => 'trades#accept_trade' # for component
   get 'states/:country' => 'application#state_list'
+  get 'successful_trades' => 'trades#fetch_successful_trades' # for component
 end

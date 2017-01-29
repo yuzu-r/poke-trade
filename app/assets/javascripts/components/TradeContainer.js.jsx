@@ -8,6 +8,7 @@ var TradeContainer = React.createClass({
         </div>
         <PendingResponseContainer />
         <IdleTradesContainer />
+        <TradeHistoryContainer />
       </div>
     )
   }
