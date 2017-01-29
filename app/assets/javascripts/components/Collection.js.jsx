@@ -11,8 +11,8 @@ var Collection = React.createClass({
     }
     else {
       var cards = this.props.cards.map((c,index) => {
-        console.log('assembling cards, props is', this.props)
-        console.log('assembling cards, cis', c)
+        //console.log('assembling cards, props is', this.props)
+        //console.log('assembling cards, cis', c)
         var cardFigCaption = React.cloneElement(this.props.children, 
                 {name: c.name, 
                   id: c.id, 

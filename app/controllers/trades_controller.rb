@@ -33,6 +33,11 @@ class TradesController < ApplicationController
     render json: {trades: trades}
   end
 
+  def fetch_successful_trades
+    trade_history = Trade.past_trades(current_user)
+    render json: {trade_history: trade_history}
+  end
+
   def accept_trade
     accept_trade = accept_trade_params.merge(user: current_user)
     puts "params going to model: #{accept_trade}"

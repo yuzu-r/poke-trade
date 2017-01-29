@@ -62,11 +62,45 @@ class Trade < ActiveRecord::Base
       trade_info = t.as_json
       trade_info[:cards] = cards
       trade_info[:proposerName] = User.find(t.proposer.id).username
-      trade_info[:desiredCardName] = DECK.find{|h| h[:number].to_i === t[:deck_id]}[:name]
+      trade_info[:desiredCardName] = DECK.find{|h| h[:number].to_i == t[:deck_id]}[:name]
       trade_bundle.push(trade_info)
-      puts "trade_info is #{trade_info}"
     end
     return trade_bundle
+  end
+
+  def self.past_trades(user)
+    trades_as_proposer = user.trades_as_proposer
+              .select('proposer_id,proposer_card_id, responder_id, responder_card_id, updated_at')
+              .where(status: 'accepted')
+              .order(:updated_at)
+    tp_bundle = []
+    trades_as_proposer.each do |tp|
+      tp_info = {}
+      proposer_deck_id = Card.find(tp[:proposer_card_id]).deck_id
+      responder_deck_id = Card.find(tp[:responder_card_id]).deck_id
+      tp_info[:user_card_name] =  DECK.find{|h| h[:number].to_i == proposer_deck_id}[:name]
+      tp_info[:partner_card_name] =  DECK.find{|h| h[:number].to_i == responder_deck_id}[:name]
+      tp_info[:trade_date] = tp[:updated_at]
+      tp_bundle.push(tp_info)
+    end
+    trades_as_responder = user.trades_as_responder
+              .select('proposer_id, proposer_card_id, responder_id,responder_card_id, updated_at')
+              .where(status: 'accepted')
+              .order(:updated_at)
+    tr_bundle = []
+    trades_as_responder.each do |tr|
+      tr_info = {}
+      proposer_deck_id = Card.find(tr[:proposer_card_id]).deck_id
+      responder_deck_id = Card.find(tr[:responder_card_id]).deck_id
+      tr_info[:partner_card_name] =  DECK.find{|h| h[:number].to_i == proposer_deck_id}[:name]
+      tr_info[:user_card_name] =  DECK.find{|h| h[:number].to_i == responder_deck_id}[:name]
+      tr_info[:trade_date] = tr[:updated_at]
+      tr_bundle.push(tr_info)
+    end 
+    trade_bundle = tp_bundle + tr_bundle
+    trade_bundle.sort_by! { |h| h[:trade_date] }
+    return trade_bundle
+
   end
 
 end
