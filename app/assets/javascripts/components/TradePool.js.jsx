@@ -21,7 +21,7 @@ var TradePool = React.createClass({
             this.setState(
               { isLoading: false, 
                 cards: response.cards, 
-                loadingMessage: 'Reminder: the trade pool does not include your own pokemon if you are signed in.'
+                loadingMessage: ''
               }
             );
           }
@@ -76,9 +76,10 @@ var TradePool = React.createClass({
       </div>;
     }
     return(
-      <div>       
+      <div className="col-xs-10 col-xs-offset-1">
         {splash}
         <h2>Trade Pool</h2>
+        <p className="text">Reminder: the trade pool does not include your own pokemon if you are signed in.</p>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
                     cards = {this.state.cards}

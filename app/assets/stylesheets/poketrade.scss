@@ -20,6 +20,15 @@ h2, h3 {
   background-color: lightyellow;
 }
 
+.caption-button{
+  margin-top: 7px;
+}
+
+.trade-pending{
+  font-size: 18px;
+  color: red;
+}
+
 .public-profile-entry{
   border: 2px dotted black;
   padding: 15px;
@@ -28,17 +37,26 @@ h2, h3 {
 
 .thumbnail-constraint{
   max-width: 180px;
-  min-width: 140px;
+  min-width: 150px;
   padding: 5px;
 }
 .caption{
   text-align: center;
 }
 
+.thumbnail{
+  min-height:289px;
+}
+
 .thumbnail-img{
   padding-top: 15px;
   width: 120px;
   height: 150px;
+}
+
+.btn-none{
+  pointer-events: none;
+  cursor: text;
 }
 
 .grid {
@@ -58,7 +76,7 @@ figure {
   margin: 10px;
 }
 
-span.pokemon-name{
+.pokemon-name{
   font-style: bold;
 }
 
