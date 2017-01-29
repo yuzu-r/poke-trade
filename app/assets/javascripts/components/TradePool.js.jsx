@@ -12,14 +12,18 @@ var TradePool = React.createClass({
         url: '/pool',
         type: 'GET',
         success: (response) => {
-          console.log(this.props)
           console.log('what response from pool?',response);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false, loadingMessage: ''})
           }
           else {
-            this.setState({isLoading: false, cards: response.cards, loadingMessage: ''});
+            this.setState(
+              { isLoading: false, 
+                cards: response.cards, 
+                loadingMessage: 'Reminder: the trade pool does not include your own pokemon if you are signed in.'
+              }
+            );
           }
         },
         fail: (response) => {
@@ -72,11 +76,9 @@ var TradePool = React.createClass({
       </div>;
     }
     return(
-      <div>
-        <h2>Trade Pool</h2>
+      <div>       
         {splash}
-        <p>{this.state.loadingMessage}</p>
-        <p>Reminder: the trade pool does not include the pokemon from your own collection if you are signed in.</p>
+        <h2>Trade Pool</h2>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
                     cards = {this.state.cards}
