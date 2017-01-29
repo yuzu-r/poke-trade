@@ -8,7 +8,8 @@ class StaticPagesController < ApplicationController
   end
   
   def trade_pool
-    render component: 'TradePool'
+    render component: 'TradePool', 
+      props: {loggedIn: signed_in?, signInPath: new_user_session_path, signUpPath: new_user_registration_path}
   end
 
   def my_collection

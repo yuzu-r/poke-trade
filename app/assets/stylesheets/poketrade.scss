@@ -1,3 +1,24 @@
+/*
+font-family: 'Averia Libre', cursive;
+font-family: 'Gruppo', cursive;
+font-family: 'Lato', sans-serif;
+*/
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h2, h3 {
+  font-family: 'Averia Libre', cursive;
+}
+
+.text {
+  font-size: 16px;
+}
+
+.well {
+  background-color: lightyellow;
+}
 
 .public-profile-entry{
   border: 2px dotted black;
