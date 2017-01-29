@@ -8,6 +8,7 @@ var TestItem = React.createClass({
             <p>{this.props.name}</p>
             <p>
               <button className="btn btn-primary"
+                       disabled={!this.props.isAvailable}
                        onClick={this.props.handleChoice.bind(null,this.props.id, this.props.name, this.props.tradeId)}>
                        Choose
               </button>

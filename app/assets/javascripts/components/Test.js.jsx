@@ -53,7 +53,8 @@ var Test = React.createClass({
                   source={c.source}
                   id={c.id}
                   tradeId={self.props.tradeId}
-                  handleChoice={self.handleChoice} />
+                  handleChoice={self.handleChoice}
+                  isAvailable={c.is_available} />
       )
     });  
     var tradeConfirmation = null;
@@ -70,7 +71,7 @@ var Test = React.createClass({
           <button className='btn btn-link'
                   onClick={this.props.cancelTrade.bind(null, this.props.tradeId)}>                
             cancel the trade
-          </button>.
+          </button>. If the Choose button is disabled, the pokemon is pending in a different trade and can't be selected.
         </p>
         <p><a href={traderLink}>view trader's profile</a></p>
         {tradeConfirmation}

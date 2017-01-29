@@ -49,6 +49,7 @@ class Card < ActiveRecord::Base
     trades = user.trades_as_proposer.select('cards.deck_id, responder_id as user_id, trades.id as trade_id')
               .joins('inner join cards on cards.id = proposer_card_id')
               .where(status: 'pending')
+    puts "#{trades}"
     trades_info = trades.to_a.map(&:serializable_hash)
     trades_info = trades_info.map(&:symbolize_keys)
     trades_info.each do |t|

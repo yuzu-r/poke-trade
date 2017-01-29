@@ -53,14 +53,16 @@ class Trade < ActiveRecord::Base
     # for each trade, they need to see the proposer's available cards
     # this can be got from Card.collection(t.proposer)    
     trades = responder.trades_as_responder
-              .select('id, proposer_id,proposer_card_id').where(status: 'pending')
+              .select('cards.deck_id, trades.id, proposer_id,proposer_card_id').where(status: 'pending')
+              .joins('inner join cards on cards.id = proposer_card_id')
+    # this needs to join with card on deck_id          
     trade_bundle = []
     trades.each do |t|
       cards = Card.collection(t.proposer)
       trade_info = t.as_json
       trade_info[:cards] = cards
       trade_info[:proposerName] = User.find(t.proposer.id).username
-      trade_info[:desiredCardName] = DECK.find{|h| h[:number].to_i === t[:proposer_card_id]}[:name]
+      trade_info[:desiredCardName] = DECK.find{|h| h[:number].to_i === t[:deck_id]}[:name]
       trade_bundle.push(trade_info)
       puts "trade_info is #{trade_info}"
     end
