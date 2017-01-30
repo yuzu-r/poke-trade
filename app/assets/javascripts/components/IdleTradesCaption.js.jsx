@@ -2,7 +2,7 @@ var IdleTradesCaption = React.createClass({
   /* don't allow user to remove from pool if a trade is pending */
   render(){
     //console.log('idle cpation', this.props)
-    var tradeElement =  <button className='btn btn-link' 
+    var tradeElement =  <button className='btn btn-danger btn-small caption-button' 
                         onClick={this.props.cancelTrade.bind(null, this.props.trade_id)}>
                           Cancel Trade
                         </button>    ;

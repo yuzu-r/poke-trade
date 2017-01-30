@@ -46,6 +46,7 @@ var Test = React.createClass({
   render(){
     var els = null;
     var self = this;
+    //console.log('intest, props', this.props);
     els = this.props.cards.map(function(c, index){
       return(
         <TestItem key={index} 
@@ -59,21 +60,23 @@ var Test = React.createClass({
     });  
     var tradeConfirmation = null;
     if (this.state.showTradeConfirmation) {
-      tradeConfirmation = <TradeConfirmation 
+      tradeConfirmation = <div>
+                            <TradeConfirmation 
                             msg={this.state.tradeConfirmationMsg} 
                             hideTradeConfirmation={this.hideTradeConfirmation}
                             acceptTrade={this.acceptTrade}/> 
+                            <br />
+                          </div>
     }
     var traderLink = "/users/" + this.props.proposerId;
+    var traderName = 'Trader ' + this.props.proposerName + "'s";
     return (
       <div>
-        <p>Select one of these pokemon to complete the trade, or
-          <button className='btn btn-link'
-                  onClick={this.props.cancelTrade.bind(null, this.props.tradeId)}>                
-            cancel the trade
-          </button>. If the Choose button is disabled, the pokemon is pending in a different trade and can't be selected.
-        </p>
-        <p><a href={traderLink}>view trader's profile</a></p>
+        <p className='text'>Select a pokemon from {traderName} collection to complete this trade.</p>
+        <p className='text'><a href={traderLink}>View {traderName} profile</a>, or
+        <a role="button"
+        onClick={this.props.cancelTrade.bind(null, this.props.tradeId)}> cancel the trade </a>
+        if you aren't interested in their offer.</p>
         {tradeConfirmation}
         <div className="row">
           {els}

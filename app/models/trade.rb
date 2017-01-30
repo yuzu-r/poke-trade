@@ -80,7 +80,7 @@ class Trade < ActiveRecord::Base
       responder_deck_id = Card.find(tp[:responder_card_id]).deck_id
       tp_info[:user_card_name] =  DECK.find{|h| h[:number].to_i == proposer_deck_id}[:name]
       tp_info[:partner_card_name] =  DECK.find{|h| h[:number].to_i == responder_deck_id}[:name]
-      tp_info[:trade_date] = tp[:updated_at]
+      tp_info[:trade_date] = tp[:updated_at].to_formatted_s(:long)
       tp_bundle.push(tp_info)
     end
     trades_as_responder = user.trades_as_responder
@@ -94,7 +94,7 @@ class Trade < ActiveRecord::Base
       responder_deck_id = Card.find(tr[:responder_card_id]).deck_id
       tr_info[:partner_card_name] =  DECK.find{|h| h[:number].to_i == proposer_deck_id}[:name]
       tr_info[:user_card_name] =  DECK.find{|h| h[:number].to_i == responder_deck_id}[:name]
-      tr_info[:trade_date] = tr[:updated_at]
+      tr_info[:trade_date] = tr[:updated_at].to_formatted_s(:long)
       tr_bundle.push(tr_info)
     end 
     trade_bundle = tp_bundle + tr_bundle
