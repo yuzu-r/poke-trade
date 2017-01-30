@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :trades_as_proposer, class_name: "Trade", foreign_key: "proposer_id"
   has_many :trades_as_responder, class_name: "Trade", foreign_key: "responder_id"
 
-  validates :username, :presence => true, length: {maximum: 20}
+  validates :username, :presence => true, :uniqueness => true, length: {maximum: 20}
   validates :bio, length: {maximum: 250}
 
   def trade_count
