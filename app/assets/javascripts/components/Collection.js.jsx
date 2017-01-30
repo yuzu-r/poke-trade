@@ -2,7 +2,7 @@ var Collection = React.createClass({
   /*
     always passing the card's name, id and is_available to children
   */
-  
+ 
   render(){
     if (this.props.isLoading === true) {
       return (
@@ -32,10 +32,8 @@ var Collection = React.createClass({
         );
       });
       return (
-        <div>
-          <ul className='grid'>
-            {cards}
-          </ul>
+        <div className='collection'>
+          {cards}        
         </div>
       )     
     }

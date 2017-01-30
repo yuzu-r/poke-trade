@@ -1,3 +1,32 @@
+/*
+font-family: 'Averia Libre', cursive;
+font-family: 'Lato', sans-serif;
+*/
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h2, h3 {
+  font-family: 'Averia Libre', cursive;
+}
+
+.text {
+  font-size: 16px;
+}
+
+.well {
+  background-color: lightyellow;
+}
+
+.caption-button{
+  margin-top: 7px;
+}
+
+.trade-pending{
+  font-size: 18px;
+  color: red;
+}
 
 .public-profile-entry{
   border: 2px dotted black;
@@ -7,11 +36,15 @@
 
 .thumbnail-constraint{
   max-width: 180px;
-  min-width: 140px;
+  min-width: 150px;
   padding: 5px;
 }
 .caption{
   text-align: center;
+}
+
+.thumbnail{
+  min-height:289px;
 }
 
 .thumbnail-img{
@@ -20,24 +53,22 @@
   height: 150px;
 }
 
-.grid {
-  padding: 15px;
-  max-width: 1300px;
-  margin: 0 auto;
-  list-style: none;
+.btn-none{
+  pointer-events: none;
+  cursor: text;
 }
 
-.grid li {
-  display: inline-block;
-  width: 220px;
-  margin: 0 5px 5px 0;
+.collection {
+  padding: 15px;
+  max-width: 1300px;
+  margin: 10px auto;
 }
 
 figure {
   margin: 10px;
 }
 
-span.pokemon-name{
+.pokemon-name{
   font-style: bold;
 }
 
@@ -54,7 +85,7 @@ img.scaled{
   width: 240px;
   height: 30px;
   padding: 10px 20px;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
@@ -81,7 +112,7 @@ img.scaled{
   width: 280px;
   border: 1px solid #aaa;
   background-color: #fff;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 16px;
   border-bottom-left-radius: 4px;

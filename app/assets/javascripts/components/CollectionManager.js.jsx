@@ -2,7 +2,7 @@ var CollectionManager = React.createClass({
   getInitialState: function(){
     return {
       isLoading: true,
-      loadingMessage: 'fetching collection from server...',
+      loadingMessage: '',
       cards: []
     }
   },
@@ -13,7 +13,7 @@ var CollectionManager = React.createClass({
         url: '/collection',
         type: 'GET',
         success: (response) => {
-          this.setState({loadingMessage: 'fetching data from poke api...'});
+          this.setState({loadingMessage: 'fetching collection from server...'});
           console.log(response);
           console.log(response.cards);
           var cardCount = response.cards.length;
@@ -57,8 +57,17 @@ var CollectionManager = React.createClass({
   },
   render(){
     return (
-      <div>
-        <h1>Collection Manager</h1>
+      <div className="col-xs-10 col-xs-offset-1">
+        <h2>Collection Manager</h2>
+        <p className="text">
+          Use the input box to search for a pokemon and add it to your collection. 
+        </p>
+        <p className="text">
+          Click the Remove button to remove a pokemon from your collection.
+        </p>
+        <p className="text">
+          Note: pokemon involved in an active trade cannot be removed; cancel the active trade first.
+        </p>       
         <PickAPoke onAddPokemon={this.addCard} list={this.props.deck}/>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 

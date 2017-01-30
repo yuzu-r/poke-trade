@@ -9,13 +9,13 @@
     <div class="panel-body">
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
 
       <div class="field">
         <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div><br />
 
       <% if devise_mapping.rememberable? -%>
         <div class="field">

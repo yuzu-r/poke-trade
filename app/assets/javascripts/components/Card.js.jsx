@@ -2,14 +2,14 @@ var Card = React.createClass({
   render(){
     //console.log('card:', this.props)
     return(
-      <li className='card-container'>
-        <figure>
-          <img className='scaled' src={this.props.source} alt='image' />
-          <figcaption>
+      <div className="col-xs-4 col-sm-3 thumbnail-constraint">
+        <div className="thumbnail">
+          <img className="thumbnail-img" src={this.props.source} alt="image of pokemon" />
+          <div className="caption">
             {this.props.children}
-          </figcaption>
-        </figure>
-      </li>
+          </div>
+        </div>
+      </div>
     )
   }
 });

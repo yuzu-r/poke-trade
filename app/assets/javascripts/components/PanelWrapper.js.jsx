@@ -15,6 +15,7 @@ var PanelWrapper=React.createClass({
                 cancelTrade={self.props.cancelTrade}
                 desiredCard={trade.desiredCardName}
                 proposerId ={trade.proposer_id}
+                proposerName={trade.proposerName}
                  />
         </PanelItem>);
     });   

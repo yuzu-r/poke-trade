@@ -1,9 +1,12 @@
-<h3>Trader Profile: <%= @user.username %></h3>
-<p> Location: <%= @user.city %> <%= @user.state %> <%= @user.country %>
-<p><%= @user.bio %></p>
-Trading since <%= @user.created_at %>
-Last seen: <%= time_ago_in_words(@user.updated_at) %> ago.
+<div class="well well-lg col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+  <h3>Trader Profile: <%= @user.username %></h3>
+  <p class='text'><%= @user.bio %></p>
+  <p class='text'><b>Location:</b> <%= nice_location(@user.city, @user.state, @user.country) %> </p>
+  <p class='text'><b>Last seen:</b> <%= time_ago_in_words(@user.updated_at) %> ago. </p>
+  <p class='text'>
+    Trading since <%= @user.created_at.strftime("%B %d, %Y") %> 
+    (<%= pluralize(@user.accepted_trades_count, 'trade') %> successfully completed).
+  </p>
+  
 
-<p>
-  <%= pluralize(@user.accepted_trades_count, 'trade') %> successfully completed.
-</p>
+</div>

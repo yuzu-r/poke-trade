@@ -7,13 +7,13 @@ var TradeHistoryContainer = React.createClass({
     )
   },
   componentDidMount() {
-    console.log('fetching past trades from server');
+    //console.log('fetching past trades from server');
     $.ajax(
       {
         url: '/successful_trades',
         type: 'GET',
         success: (response) => {
-          console.log('successful trades response, proposer: ',response);
+          //console.log('successful trades response, proposer: ',response);
           this.setState(
             {
               tradeHistory: response.trade_history,

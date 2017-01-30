@@ -20,7 +20,12 @@ var IdleTradesContainer = React.createClass({
             this.setState({isLoading: false, loadingMessage: ''})
           }
           else {
-            this.setState({isLoading: false, cards: response.cards, loadingMessage: ''});
+            this.setState(
+              { isLoading: false, 
+                cards: response.cards, 
+                loadingMessage: ''
+              }
+            );
           }
         },
         fail: (response) => {
@@ -56,6 +61,8 @@ var IdleTradesContainer = React.createClass({
             <h3 className='panel-title'>Awaiting responses from other traders</h3>
           </div>
           <div className='panel-body'>
+            <p className='text'>You proposed a trade for these pokemon.</p>
+            <p className='text'>You can cancel the trade if the owner is taking too long to respond, or if you change your mind.</p>
             <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
                     cards = {this.state.cards}>
