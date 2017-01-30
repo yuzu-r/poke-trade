@@ -63,10 +63,10 @@ var CollectionManager = React.createClass({
           Use the input box to search for a pokemon and add it to your collection. 
         </p>
         <p className="text">
-          Click the Remove button to remove a pokemon from your collection. Note: pokemon involved in an active trade cannot be removed.
+          Click the Remove button to remove a pokemon from your collection.
         </p>
         <p className="text">
-          Note: pokemon involved in an active trade cannot be removed.
+          Note: pokemon involved in an active trade cannot be removed; cancel the active trade first.
         </p>       
         <PickAPoke onAddPokemon={this.addCard} list={this.props.deck}/>
         <Collection isLoading={this.state.isLoading} 
