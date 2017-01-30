@@ -32,10 +32,8 @@ var Collection = React.createClass({
         );
       });
       return (
-        <div>
-          <ul className='grid'>
-            {cards}
-          </ul>
+        <div className='collection'>
+          {cards}        
         </div>
       )     
     }

@@ -1,7 +1,7 @@
 var TradingPoolCaption = React.createClass({
   render(){
     //console.log('trading pool caption',this.props);
-    var tradeElement = <button className='btn btn-danger btn-small caption-button btn-none' disabled='true'>Trade Pending!</button>;
+    var tradeElement = <button className='btn btn-default btn-small caption-button btn-none' disabled='true'>Trade Pending!</button>;
     if (this.props.isAvailable) {
       tradeElement =  <button className='btn btn-primary btn-small caption-button' 
                               onClick={this.props.beginTrade.bind(null, this.props.id)}>

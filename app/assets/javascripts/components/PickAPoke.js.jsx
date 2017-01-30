@@ -59,7 +59,7 @@ var PickAPoke = React.createClass({
           getSuggestionValue={this.getSuggestionValue}
           renderSuggestion={this.renderSuggestion}
           inputProps={inputProps} />
-        <button 
+        &nbsp;&nbsp;<button 
           className='btn btn-primary' 
           disabled={this.state.submitReady}
           onClick={this.props.onAddPokemon.bind(null,this.state.value)}
