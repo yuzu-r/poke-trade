@@ -14,8 +14,8 @@ var CollectionManager = React.createClass({
         type: 'GET',
         success: (response) => {
           this.setState({loadingMessage: 'fetching collection from server...'});
-          console.log(response);
-          console.log(response.cards);
+          //console.log(response);
+          //console.log(response.cards);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false})

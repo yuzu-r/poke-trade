@@ -4,25 +4,30 @@ var PickAPoke = React.createClass({
       {
         value: '',
         suggestions: [],
-        submitReady: false
+        disableSubmit: true
       }
     )
   },
   onChange: function(event, { newValue, method }){
+    var list = this.props.list;
+    var nameValid = list.some(function(card){
+      if (card.name === newValue) {
+        return true;
+      }
+    });
     this.setState({
-      value: newValue
+      value: newValue,
+      disableSubmit: !nameValid
     });
   },
   onSuggestionsFetchRequested: function ({ value }) {
     this.setState({
       suggestions: this.getSuggestions(value),
-      submitReady: true
     });
   },
   onSuggestionsClearRequested: function () {
     this.setState({
       suggestions: [],
-      submitReady: false
     });
   },
   escapeRegexCharacters: function(str) {
@@ -61,7 +66,7 @@ var PickAPoke = React.createClass({
           inputProps={inputProps} />
         &nbsp;&nbsp;<button 
           className='btn btn-primary' 
-          disabled={this.state.submitReady}
+          disabled={this.state.disableSubmit}
           onClick={this.props.onAddPokemon.bind(null,this.state.value)}
         >
         Add Pokemon</button>
