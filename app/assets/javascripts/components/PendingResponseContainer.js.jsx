@@ -18,7 +18,7 @@ var PendingResponseContainer = React.createClass({
           this.setState({trades: response.trades}); 
 
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }

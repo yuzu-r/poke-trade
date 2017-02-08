@@ -4,7 +4,7 @@ class Trade < ActiveRecord::Base
   # to-do: validate that the proposer card and responsder card are available
 
   def self.cancel(cancel_trade_params)
-    trade = Trade.find(cancel_trade_params[:trade_id])
+    trade = Trade.find_by(id: cancel_trade_params[:trade_id])
     if trade
       if cancel_trade_params[:user_id] == trade.responder_id || 
         cancel_trade_params[:user_id] == trade.proposer_id
@@ -27,7 +27,7 @@ class Trade < ActiveRecord::Base
   end
 
   def self.accept(accept_trade_params)
-    trade = Trade.find(accept_trade_params[:trade_id])
+    trade = Trade.find_by(id: accept_trade_params[:trade_id])
     if trade
       if accept_trade_params[:user] == trade.responder ||
         accept_trade_params[:user] == trade.proposer
@@ -61,7 +61,7 @@ class Trade < ActiveRecord::Base
       cards = Card.collection(t.proposer)
       trade_info = t.as_json
       trade_info[:cards] = cards
-      trade_info[:proposerName] = User.find(t.proposer.id).username
+      trade_info[:proposerName] = User.find_by(id: t.proposer.id).username
       trade_info[:desiredCardName] = DECK.find{|h| h[:number].to_i == t[:deck_id]}[:name]
       trade_bundle.push(trade_info)
     end

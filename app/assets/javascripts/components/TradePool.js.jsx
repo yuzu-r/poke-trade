@@ -12,7 +12,7 @@ var TradePool = React.createClass({
         url: '/pool',
         type: 'GET',
         success: (response) => {
-          console.log('what response from pool?',response);
+          //console.log('what response from pool?',response);
           var cardCount = response.cards.length;
           if (cardCount === 0) {
             this.setState({isLoading: false, loadingMessage: ''})
@@ -26,14 +26,14 @@ var TradePool = React.createClass({
             );
           }
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }
     )    
   },
   beginTrade(card_id){
-    console.log('want to trade!', card_id);
+    //console.log('want to trade!', card_id);
     $.ajax(
       {
         url: '/trades',
@@ -42,11 +42,14 @@ var TradePool = React.createClass({
                 trade: {proposer_card_id: card_id}
               },
         success: (response) => {
-          console.log('trade create?',response);
+          //console.log('trade create?',response);
           Turbolinks.visit('/');
         },
-        fail: (response) => {
-          console.log('trade create fail', response.responseText);
+        error: (response) => {
+          console.log('trade create fail', response.responseText, response.status);
+          if (response.status == 401) {
+            Turbolinks.visit('/devise/users/sign_in');
+          }
         }
       }
     )    
@@ -78,7 +81,7 @@ var TradePool = React.createClass({
     return(
       <div className="col-xs-10 col-xs-offset-1">
         {splash}
-        <h2>Trade Pool</h2>
+        <h2>Trading Pool</h2>
         <p className="text">Reminder: the trade pool does not include your own pokemon if you are signed in.</p>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 

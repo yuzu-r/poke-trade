@@ -21,8 +21,11 @@ var Test = React.createClass({
             Turbolinks.visit('/');
           }
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
+          if (response.status == 401) {
+            Turbolinks.visit('/devise/users/sign_in');
+          }          
         }
       }
     )      

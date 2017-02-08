@@ -24,7 +24,7 @@ var CollectionManager = React.createClass({
             this.setState({isLoading: false, cards: response.cards});
           }
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }
@@ -40,8 +40,12 @@ var CollectionManager = React.createClass({
           console.log('success!', response);
           Turbolinks.visit('/my_collection');
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
+          if (response.status == 401) {
+            Turbolinks.visit('/devise/users/sign_in');
+          }          
+          else {Turbolinks.visit('/');}
         }
       }
     )
@@ -52,7 +56,15 @@ var CollectionManager = React.createClass({
       url: '/cards/',  
       type: 'DELETE',
       data: {card: {id: card_id}}, 
-      success(response) { console.log('successfully removed item') } 
+      success: (response) => { 
+        console.log('successfully removed item'); 
+        Turbolinks.visit('/my_collection');
+      }, 
+      error: (response) => {
+        if (response.status == 401) {
+          Turbolinks.visit('/devise/users/sign_in');
+        }
+      }
     });     
   },
   render(){

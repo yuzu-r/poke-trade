@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users, :path_prefix => 'devise'
+  devise_for :users, :path_prefix => 'devise', skip: :registrations
+  devise_scope :user do
+    resource :registration, only: [:new, :create, :edit, :update], 
+    path_names: {new: 'sign_up'},
+    controller: 'devise/registrations',
+    as: :user_registration do
+      get :cancel
+    end
+  end
+
   resources :users, only:[:show]
 
   resource :cards
