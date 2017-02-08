@@ -1,11 +1,12 @@
-var CollectionManager = React.createClass({
-  getInitialState: function(){
-    return {
+class CollectionManager extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
       isLoading: true,
       loadingMessage: '',
       cards: []
-    }
-  },
+    };
+  }
   componentDidMount() {
     console.log('fetching collection from server');
     $.ajax(
@@ -29,7 +30,7 @@ var CollectionManager = React.createClass({
         }
       }
     )
-  },
+  }
   addCard(name,e){
     $.ajax(
       {
@@ -49,7 +50,7 @@ var CollectionManager = React.createClass({
         }
       }
     )
-  },
+  }
   deleteCard(card_id,e){
     console.log('removing from trading pool', card_id);
     $.ajax({ 
@@ -66,7 +67,7 @@ var CollectionManager = React.createClass({
         }
       }
     });     
-  },
+  }
   render(){
     return (
       <div className="col-xs-10 col-xs-offset-1">
@@ -89,4 +90,4 @@ var CollectionManager = React.createClass({
       </div>
     )
   }
-});
+};

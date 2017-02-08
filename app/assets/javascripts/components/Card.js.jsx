@@ -1,4 +1,4 @@
-var Card = React.createClass({
+class Card extends React.Component{
   render(){
     //console.log('card:', this.props)
     return(
@@ -12,4 +12,4 @@ var Card = React.createClass({
       </div>
     )
   }
-});
+};

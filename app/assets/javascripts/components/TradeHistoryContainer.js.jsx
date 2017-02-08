@@ -1,11 +1,10 @@
-var TradeHistoryContainer = React.createClass({
-  getInitialState: function(){
-    return (
-      {
-        tradeHistory: [],
-      }
-    )
-  },
+class TradeHistoryContainer extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+                  tradeHistory: [],
+                 };
+  }
   componentDidMount() {
     //console.log('fetching past trades from server');
     $.ajax(
@@ -20,12 +19,12 @@ var TradeHistoryContainer = React.createClass({
             }
           ); 
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }
     )    
-  }, 
+  }
   render(){
     var tradeHistoryData = this.state.tradeHistory;
     var elTradeHistory = tradeHistoryData.map(function(t, index) {
@@ -48,5 +47,5 @@ var TradeHistoryContainer = React.createClass({
       </div>
     );
   }
-});
+};
 

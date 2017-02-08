@@ -1,5 +1,4 @@
-var DeleteFromPoolCaption = React.createClass({
-  /* don't allow user to remove from pool if a trade is pending */
+class DeleteFromPoolCaption extends React.Component{
   render(){
     var tradeElement = <button className='btn btn-default btn-small caption-button btn-none' disabled='true'>Trade Pending!</button>;
     if (this.props.isAvailable) {
@@ -16,5 +15,5 @@ var DeleteFromPoolCaption = React.createClass({
       </div>
     );
   }
-});
+};
 

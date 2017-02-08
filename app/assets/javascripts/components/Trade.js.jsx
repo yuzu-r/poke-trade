@@ -1,13 +1,15 @@
-var Test = React.createClass({
-  getInitialState() {
-    return (
-      {
+class Trade extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
         showTradeConfirmation: false,
         tradeConfirmationMsg: '',
         tradeFor: null
-      }
-    )
-  },
+      };
+    this.handleChoice = this.handleChoice.bind(this);
+    this.hideTradeConfirmation = this.hideTradeConfirmation.bind(this);
+    this.acceptTrade = this.acceptTrade.bind(this);
+  }
   acceptTrade(){
     var desiredCard = this.state.tradeFor;
     var tradeId = this.state.tradeId;
@@ -29,8 +31,9 @@ var Test = React.createClass({
         }
       }
     )      
-  },
+  }
   handleChoice(cardId,name,tradeId){
+    console.log('what is this? in trade but coming from tradeItem', this.props);
     var msg = "You're trading " + this.props.desiredCard + ' for ' + name + ', ok?';
     this.setState({
       showTradeConfirmation: true, 
@@ -38,21 +41,21 @@ var Test = React.createClass({
       tradeFor: cardId,
       tradeId: tradeId
     });
-  },
+  }
   hideTradeConfirmation(){
     this.setState({
       showTradeConfirmation: false,
       tradeConfirmationMsg: '',
       tradeFor: null    
     })
-  },
+  }
   render(){
     var els = null;
     var self = this;
-    //console.log('intest, props', this.props);
+    //console.log('intrade, props', this.props);
     els = this.props.cards.map(function(c, index){
       return(
-        <TestItem key={index} 
+        <TradeItem key={index} 
                   name={c.name} 
                   source={c.source}
                   id={c.id}
@@ -87,4 +90,4 @@ var Test = React.createClass({
       </div>
     );
   }
-});
+};

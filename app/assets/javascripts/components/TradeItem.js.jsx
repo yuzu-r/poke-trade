@@ -1,4 +1,4 @@
-var TestItem = React.createClass({
+class TradeItem extends React.Component {
   render(){
     if (this.props.isAvailable){
       var tradeElement = <button className='btn btn-primary btn-small caption-button'
@@ -24,5 +24,4 @@ var TestItem = React.createClass({
       </div>      
     );
   }
-});
-
+};

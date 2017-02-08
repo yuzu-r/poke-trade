@@ -1,9 +1,8 @@
-var PendingResponseTradesCaption = React.createClass({
+class PendingResponseTradesCaption extends React.Component{
   render(){
-    var tradeElement =  <button className='btn btn-link' 
-                        >
+    var tradeElement =  <button className='btn btn-link'>
                           Cancel Trade
-                        </button>    ;               
+                        </button>;
     return (
       <div>
         <span className='pokemon-name'>{this.props.name}, find card to swap or cancel</span>
@@ -12,5 +11,4 @@ var PendingResponseTradesCaption = React.createClass({
       </div>
     );
   }
-});
-
+};

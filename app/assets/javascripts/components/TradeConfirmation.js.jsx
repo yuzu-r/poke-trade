@@ -1,4 +1,4 @@
-var TradeConfirmation = React.createClass({
+class TradeConfirmation extends React.Component{
   render(){
     return (
       <div>
@@ -11,5 +11,5 @@ var TradeConfirmation = React.createClass({
       </div>
     );
   }
-});
+};
 

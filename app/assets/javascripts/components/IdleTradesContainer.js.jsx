@@ -1,12 +1,12 @@
-var IdleTradesContainer = React.createClass({
-  getInitialState: function(){
-    return (
-      {
+class IdleTradesContainer extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
         cards: [],
         loadingMessage: 'You have no trades awaiting a response.'
       }
-    )
-  },
+
+  }
   componentDidMount() {
     $.ajax(
       {
@@ -28,12 +28,12 @@ var IdleTradesContainer = React.createClass({
             );
           }
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }
     )    
-  },
+  }
   cancelTrade(tradeId) {
     console.log('cancelling trade', tradeId);
     $.ajax(
@@ -52,7 +52,7 @@ var IdleTradesContainer = React.createClass({
         }
       }
     )       
-  },
+  }
   render(){
     return(
       <div className='container col-xs-10 col-xs-offset-1'>
@@ -73,4 +73,4 @@ var IdleTradesContainer = React.createClass({
       </div>
     )
   }
-});
+};

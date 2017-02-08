@@ -1,5 +1,5 @@
-var PanelWrapper=React.createClass({
-  render: function(){
+class PanelWrapper extends React.Component{
+  render(){
     var self = this;
     var trades = this.props.trades;
     var els = trades.map(function(trade,index){
@@ -10,7 +10,7 @@ var PanelWrapper=React.createClass({
                     proposerName={trade.proposerName}
                     tradeId = {trade.id}
                     index={index}>
-          <Test cards={trade.cards} 
+          <Trade cards={trade.cards} 
                 tradeId={trade.id} 
                 cancelTrade={self.props.cancelTrade}
                 desiredCard={trade.desiredCardName}
@@ -25,4 +25,4 @@ var PanelWrapper=React.createClass({
       </div>
     )
   }
-})
+};
