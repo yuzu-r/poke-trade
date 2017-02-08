@@ -1,4 +1,4 @@
-var TradingPoolCaption = React.createClass({
+class TradingPoolCaption extends React.Component {
   render(){
     //console.log('trading pool caption',this.props);
     var tradeElement = <button className='btn btn-default btn-small caption-button btn-none' disabled='true'>Trade Pending!</button>;
@@ -19,5 +19,5 @@ var TradingPoolCaption = React.createClass({
       </div>
     );
   }
-});
+};
 

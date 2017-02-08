@@ -1,10 +1,5 @@
-var PanelItem=React.createClass({
-  getDefaultProps: function(){
-    return(
-      {title: 'hi', index: 1}
-    )
-  },
-  render: function(){
+class PanelItem extends React.Component{
+  render(){
     var idH = 'ap-heading-' + this.props.index;
     var idC = 'ap-collapse-' + this.props.index;
     var hrefC = '#' + idC;
@@ -30,4 +25,4 @@ var PanelItem=React.createClass({
       </div>
     )
   }
-})
+};

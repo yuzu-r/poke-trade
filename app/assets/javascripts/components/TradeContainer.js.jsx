@@ -1,4 +1,4 @@
-var TradeContainer = React.createClass({
+class TradeContainer extends React.Component{
   render(){
     return(
       <div>
@@ -12,4 +12,4 @@ var TradeContainer = React.createClass({
       </div>
     )
   }
-});
+};

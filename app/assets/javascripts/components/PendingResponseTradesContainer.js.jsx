@@ -1,12 +1,11 @@
-var PendingResponseTradesContainer = React.createClass({
-  getInitialState: function(){
-    return (
-      {
+class PendingResponseTradesContainer extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
         cards: [],
         loadingMessage: 'You have no trades awaiting a response.'
       }
-    )
-  },
+  }
   componentDidMount() {
     console.log('fetching idle trades from server');
     $.ajax(
@@ -24,12 +23,12 @@ var PendingResponseTradesContainer = React.createClass({
             this.setState({isLoading: false, cards: response.cards, loadingMessage: ''});
           }
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }
     )    
-  },
+  }
   render(){
     return(
       <div className='container col-xs-10 col-xs-offset-1'>
@@ -48,4 +47,4 @@ var PendingResponseTradesContainer = React.createClass({
       </div>
     )
   }
-});
+};

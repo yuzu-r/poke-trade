@@ -1,11 +1,12 @@
-var TradePool = React.createClass({
-  getInitialState() {
-    return {
+class TradePool extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
       isLoading: true,
       loadingMessage: 'fetching pool from server...',
       cards: []
-    }   
-  },
+    };
+  }
   componentDidMount() {
     $.ajax(
       {
@@ -31,7 +32,7 @@ var TradePool = React.createClass({
         }
       }
     )    
-  },
+  }
   beginTrade(card_id){
     //console.log('want to trade!', card_id);
     $.ajax(
@@ -53,7 +54,7 @@ var TradePool = React.createClass({
         }
       }
     )    
-  },
+  }
   render(){
     if (this.props.loggedIn) {
       var splash = null;
@@ -92,4 +93,4 @@ var TradePool = React.createClass({
       </div>
     )
   }
-});
+};

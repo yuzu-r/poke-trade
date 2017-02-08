@@ -1,14 +1,17 @@
-var PickAPoke = React.createClass({
-  getInitialState() {
-    return (
-      {
+class PickAPoke extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
         value: '',
         suggestions: [],
         disableSubmit: true
-      }
-    )
-  },
-  onChange: function(event, { newValue, method }){
+      };
+    this.onChange = this.onChange.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+    this.getSuggestions = this.getSuggestions.bind(this);
+  }
+  onChange(event, { newValue, method }) {
     var list = this.props.list;
     var nameValid = list.some(function(card){
       if (card.name === newValue) {
@@ -19,21 +22,21 @@ var PickAPoke = React.createClass({
       value: newValue,
       disableSubmit: !nameValid
     });
-  },
-  onSuggestionsFetchRequested: function ({ value }) {
+  };
+  onSuggestionsFetchRequested ({ value }) {
     this.setState({
       suggestions: this.getSuggestions(value),
     });
-  },
-  onSuggestionsClearRequested: function () {
+  };
+  onSuggestionsClearRequested() {
     this.setState({
       suggestions: [],
     });
-  },
-  escapeRegexCharacters: function(str) {
+  };
+  escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  },
-  getSuggestions: function(value){
+  };
+  getSuggestions(value){
     const escapedValue = this.escapeRegexCharacters(value.trim());
     if (escapedValue === '') {
       return [];
@@ -41,13 +44,13 @@ var PickAPoke = React.createClass({
     const regex = new RegExp(escapedValue, 'i');
     list = this.props.list;
     return list.filter(language => regex.test(language.name));
-  },
-  getSuggestionValue: function(suggestion) {
+  };
+  getSuggestionValue(suggestion) {
     return suggestion.name;
-  },
-  renderSuggestion: function(suggestion){
+  };
+  renderSuggestion(suggestion){
     return (<div>{suggestion.name}</div>);
-  },
+  };
   render(){
     const { value, suggestions } = this.state;
     const inputProps = {
@@ -73,4 +76,4 @@ var PickAPoke = React.createClass({
       </div>
     );
   }
-});
+};

@@ -1,4 +1,4 @@
-var IdleTradesCaption = React.createClass({
+class IdleTradesCaption extends React.Component{
   /* don't allow user to remove from pool if a trade is pending */
   render(){
     //console.log('idle cpation', this.props)
@@ -17,5 +17,4 @@ var IdleTradesCaption = React.createClass({
       </div>
     );
   }
-});
-
+};

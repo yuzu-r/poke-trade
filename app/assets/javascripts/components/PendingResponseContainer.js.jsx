@@ -1,12 +1,12 @@
-var PendingResponseContainer = React.createClass({
-  getInitialState: function(){
-    return (
-      {
+class PendingResponseContainer extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
         trades: [],
         loadingMessage: 'You have no trades awaiting a response.'
       }
-    )
-  },
+
+  }
   componentDidMount() {
     //console.log('fetching pending trades from server');
     $.ajax(
@@ -23,7 +23,7 @@ var PendingResponseContainer = React.createClass({
         }
       }
     )    
-  },
+  }
   cancelTrade(tradeId) {
     //console.log('cancelling a trade', tradeId);
     $.ajax(
@@ -37,12 +37,12 @@ var PendingResponseContainer = React.createClass({
             Turbolinks.visit('/');
           }
         },
-        fail: (response) => {
+        error: (response) => {
           console.log('fail', response.responseText);
         }
       }
     )   
-  },
+  }
   render(){
     return(
       <div className='container col-xs-10 col-xs-offset-1'>
@@ -57,4 +57,4 @@ var PendingResponseContainer = React.createClass({
       </div>
     )
   }
-});
+};
