@@ -63,10 +63,9 @@ class TradePool extends React.Component{
     else {
       splash = <div>
         <div className="well well-lg col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-          <h2>Welcome to PokePost!</h2>
-          <h3>Thanks for stopping by. Here's how to get a piece of the action:</h3>
+          <h2>Welcome to PokeTrader!</h2>
+          <h3>Thanks for stopping by. How this works:</h3>
           <ul className="text">
-            <li>Sign up. You need an account to join the action.</li>
             <li>Add pokemon that you want to trade away to your collection.</li>
             <li>Check out the Trading Pool to find pokemon you want to trade for.</li>
             <li>Have fun!</li>
@@ -75,6 +74,8 @@ class TradePool extends React.Component{
             <a className="btn btn-default"  href={this.props.signInPath} role="button">Sign in</a>
             &nbsp;
             <a className="btn btn-default"  href={this.props.signUpPath} role="button">Sign up</a>
+            &nbsp;
+            <a className="btn btn-default"  href='/about' role="button">More Details</a>
           </p>
         </div>
         <div className="clearfix"></div>

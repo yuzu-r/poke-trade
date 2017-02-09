@@ -24,7 +24,7 @@
           <% if user_signed_in? %>
             <li>
               <%= link_to(my_trades_path) do %>
-                Trade Viewer <span class='badge'><%=current_user.trade_count %></span>
+                Trade Viewer <span id='badge' data-turbolinks-permanent class='badge'><%=current_user.trade_count %></span>
               <% end %>
             </li>
             <li>

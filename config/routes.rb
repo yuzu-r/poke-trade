@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'my_trades' => 'static_pages#trade_viewer' #for people
   get 'my_collection' => 'static_pages#my_collection' #for people
   get 'trade_pool' => 'static_pages#trade_pool' #for people
+  get 'about' => 'static_pages#about' #for people
   get 'collection' => 'cards#fetch_collection' # for the component
   get 'pool' => 'cards#fetch_pool' # for the component
   get 'idle' => 'cards#fetch_idle' # for the component

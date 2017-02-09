@@ -1,8 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_action :authenticate_user!, except: [:trade_pool]
-  def show
-    #@card = Pokemon::Card.find('xy7-54')
-  end
+  before_action :authenticate_user!, except: [:trade_pool, :about]
 
   def trade_viewer
     render component: 'TradeContainer'
@@ -15,5 +12,8 @@ class StaticPagesController < ApplicationController
 
   def my_collection
     render component: 'CollectionManager', props: {deck: DECK}
+  end
+
+  def about
   end
 end

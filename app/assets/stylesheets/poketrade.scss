@@ -7,8 +7,65 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-h2, h3 {
+h2, h3,h4 {
   font-family: 'Averia Libre', cursive;
+}
+
+.navbar-brand{
+  font-family: 'Averia Libre', cursive;
+  color: white;
+}
+
+.navbar{
+  background-color: #54494B;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+  color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover{
+  color: silver;
+}
+
+.navbar-inverse .navbar-text{
+  color: white;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: silver;
+}
+
+
+div.jumbotron.about-howto{
+  background-color: #FBF6DF;
+  margin-bottom: 0px;
+  margin-top: -20px;
+}
+
+div.about-stack{
+  background-color: #95E1E0;
+  margin-bottom: 0px;
+}
+
+.fl {
+  float: left;
+  margin-right: 20px;
+  padding-top: 12px;
+}
+
+.fl-text{
+  font-size: 16px;
+}
+
+.fr{
+  float: right;
+  margin-left: 20px;
+  padding-top: 12px;
 }
 
 .text {
@@ -16,7 +73,7 @@ h2, h3 {
 }
 
 .well {
-  background-color: lightyellow;
+  background-color: #FBF6DF;
 }
 
 .caption-button{
