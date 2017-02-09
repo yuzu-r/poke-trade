@@ -72,7 +72,7 @@ class PickAPoke extends React.Component {
           disabled={this.state.disableSubmit}
           onClick={this.props.onAddPokemon.bind(null,this.state.value)}
         >
-        Add Pokemon</button>
+        Add Pokémon</button>
       </div>
     );
   }

@@ -63,11 +63,11 @@ class TradePool extends React.Component{
     else {
       splash = <div>
         <div className="well well-lg col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-          <h2>Welcome to PokeTrader!</h2>
+          <h2>Welcome to PokéTrader!</h2>
           <h3>Thanks for stopping by. How this works:</h3>
           <ul className="text">
-            <li>Add pokemon that you want to trade away to your collection.</li>
-            <li>Check out the Trading Pool to find pokemon you want to trade for.</li>
+            <li>Add pokémon that you want to trade away to your collection.</li>
+            <li>Check out the Trading Pool to find pokémon you want to trade for.</li>
             <li>Have fun!</li>
           </ul>
           <p>
@@ -85,7 +85,7 @@ class TradePool extends React.Component{
       <div className="col-xs-10 col-xs-offset-1">
         {splash}
         <h2>Trading Pool</h2>
-        <p className="text">Reminder: the trade pool does not include your own pokemon if you are signed in.</p>
+        <p className="text">Reminder: the trade pool does not include your own pokémon if you are signed in.</p>
         <Collection isLoading={this.state.isLoading} 
                     loadingMessage={this.state.loadingMessage} 
                     cards = {this.state.cards}

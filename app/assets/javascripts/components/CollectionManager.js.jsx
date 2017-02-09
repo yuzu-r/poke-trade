@@ -79,13 +79,13 @@ class CollectionManager extends React.Component{
       <div className="col-xs-10 col-xs-offset-1">
         <h2>Collection Manager</h2>
         <p className="text">
-          Use the input box to search for a pokemon and add it to your collection. 
+          Use the input box to search for a pokémon and add it to your collection. 
         </p>
         <p className="text">
-          Click the Remove button to remove a pokemon from your collection.
+          Click the Remove button to remove a pokémon from your collection.
         </p>
         <p className="text">
-          Note: pokemon involved in an active trade cannot be removed; cancel the active trade first.
+          Note: pokémon involved in an active trade cannot be removed; cancel the active trade first.
         </p>       
         <PickAPoke onAddPokemon={this.addCard} list={this.props.deck}/>
         <Collection isLoading={this.state.isLoading} 

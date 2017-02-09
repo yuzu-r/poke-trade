@@ -76,7 +76,7 @@ class Trade extends React.Component{
     var traderName = 'Trader ' + this.props.proposerName + "'s";
     return (
       <div>
-        <p className='text'>Select a pokemon from {traderName} collection to complete this trade.</p>
+        <p className='text'>Select a pokémon from {traderName} collection to complete this trade.</p>
         <p className='text'><a href={traderLink}>View {traderName} profile</a>, or
         <a role="button"
         onClick={this.props.cancelTrade.bind(null, this.props.tradeId)}> cancel the trade </a>
