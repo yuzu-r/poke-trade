@@ -33,7 +33,6 @@ class Trade extends React.Component{
     )      
   }
   handleChoice(cardId,name,tradeId){
-    console.log('what is this? in trade but coming from tradeItem', this.props);
     var msg = "You're trading " + this.props.desiredCard + ' for ' + name + ', ok?';
     this.setState({
       showTradeConfirmation: true, 
@@ -52,7 +51,6 @@ class Trade extends React.Component{
   render(){
     var els = null;
     var self = this;
-    //console.log('intrade, props', this.props);
     els = this.props.cards.map(function(c, index){
       return(
         <TradeItem key={index} 

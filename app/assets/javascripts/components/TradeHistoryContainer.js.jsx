@@ -3,6 +3,8 @@ class TradeHistoryContainer extends React.Component{
     super(props);
     this.state = {
                   tradeHistory: [],
+                  isLoading: true,
+                  msg: 'fetching history from server...'
                  };
   }
   componentDidMount() {
@@ -16,24 +18,35 @@ class TradeHistoryContainer extends React.Component{
           this.setState(
             {
               tradeHistory: response.trade_history,
+              isLoading: false,
+              msg: ''
             }
           ); 
         },
         error: (response) => {
           console.log('fail', response.responseText);
+          this.setState({
+            msg: response.responseText
+          })
         }
       }
     )    
   }
   render(){
-    var tradeHistoryData = this.state.tradeHistory;
-    var elTradeHistory = tradeHistoryData.map(function(t, index) {
-      return(
-        <div key={index}>
-          <span>You traded {t.user_card_name} for {t.partner_card_name} on {t.trade_date}.</span>
-        </div>
-      )
-    })
+    var elTradeHistory;
+    if (this.state.isLoading === true) {
+      var elTradeHistory = <p>{this.state.msg}</p>;
+    }
+    else{
+      var tradeHistoryData = this.state.tradeHistory;
+      elTradeHistory = tradeHistoryData.map(function(t, index) {
+        return(
+          <div key={index}>
+            <span>You traded {t.user_card_name} for {t.partner_card_name} on {t.trade_date}.</span>
+          </div>
+        )
+      })
+    }
     return (
       <div className='container col-xs-10 col-xs-offset-1'>
         <div className='panel panel-success'>
@@ -45,7 +58,8 @@ class TradeHistoryContainer extends React.Component{
           </div>
         </div>
       </div>
-    );
+    );      
   }
 };
+
 

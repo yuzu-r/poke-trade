@@ -29,6 +29,7 @@ class TradePool extends React.Component{
         },
         error: (response) => {
           console.log('fail', response.responseText);
+          this.setState({loadingMessage: response.responseText});
         }
       }
     )    
@@ -43,7 +44,7 @@ class TradePool extends React.Component{
                 trade: {proposer_card_id: card_id}
               },
         success: (response) => {
-          //console.log('trade create?',response);
+          //console.log('trade create?',response) // visit the trade pool whether success/fail
           Turbolinks.visit('/');
         },
         error: (response) => {
@@ -61,9 +62,9 @@ class TradePool extends React.Component{
     }
     else {
       splash = <div>
-        <div className="well well-lg col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <div className="well well-lg col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
           <h2>Welcome to PokePost!</h2>
-          <h3>Thanks for stopping by. Here's how to get in on the fun:</h3>
+          <h3>Thanks for stopping by. Here's how to get a piece of the action:</h3>
           <ul className="text">
             <li>Sign up. You need an account to join the action.</li>
             <li>Add pokemon that you want to trade away to your collection.</li>
@@ -71,9 +72,9 @@ class TradePool extends React.Component{
             <li>Have fun!</li>
           </ul>
           <p>
-            <a className="btn btn-primary"  href={this.props.signUpPath} role="button">Sign up</a>
-            &nbsp;
             <a className="btn btn-default"  href={this.props.signInPath} role="button">Sign in</a>
+            &nbsp;
+            <a className="btn btn-default"  href={this.props.signUpPath} role="button">Sign up</a>
           </p>
         </div>
         <div className="clearfix"></div>

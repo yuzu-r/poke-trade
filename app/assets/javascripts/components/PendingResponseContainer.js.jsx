@@ -5,7 +5,6 @@ class PendingResponseContainer extends React.Component{
         trades: [],
         loadingMessage: 'You have no trades awaiting a response.'
       }
-
   }
   componentDidMount() {
     //console.log('fetching pending trades from server');
@@ -35,6 +34,9 @@ class PendingResponseContainer extends React.Component{
           //console.log('what response?',response);
           if (response.success) {
             Turbolinks.visit('/');
+          }
+          else {
+            console.log('something went wrong while cancelling trade');
           }
         },
         error: (response) => {

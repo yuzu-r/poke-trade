@@ -100,7 +100,6 @@ class Trade < ActiveRecord::Base
     trade_bundle = tp_bundle + tr_bundle
     trade_bundle.sort_by! { |h| h[:trade_date] }
     return trade_bundle
-
   end
 
 end

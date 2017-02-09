@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :authenticate_user!, except: [:trade_pool]
   def show
     #@card = Pokemon::Card.find('xy7-54')
   end

@@ -13,6 +13,7 @@ class CardsController < ApplicationController
     card_id = DECK.find{|h| h[:name] === card_params[:name]}[:number]
     new_card = Card.create(user_id: current_user.id, deck_id: card_id, is_available: true)
     if new_card.valid?
+      flash[:notice] = 'Card added to collection. Other traders will now see it in the trading pool.'
       render json: {:success => "success", :status_code => "200"}
     else
       flash[:alert] = 'Card not created successfully.'
@@ -22,8 +23,8 @@ class CardsController < ApplicationController
 
   def destroy
     Card.destroy(card_params[:id])
-    flash[:notice] = 'Card removed from trading pool.'
-    redirect_to root_path
+    flash[:notice] = 'Card removed from collection.'
+    render json: {:success => "success"}
   end
 
   def fetch_collection

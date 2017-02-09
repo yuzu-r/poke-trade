@@ -8,7 +8,7 @@ class CollectionManager extends React.Component{
     };
   }
   componentDidMount() {
-    console.log('fetching collection from server');
+    //console.log('fetching collection from server');
     $.ajax(
       {
         url: '/collection',
@@ -27,6 +27,7 @@ class CollectionManager extends React.Component{
         },
         error: (response) => {
           console.log('fail', response.responseText);
+          this.setState({loadingMessage: response.responseText});
         }
       }
     )
@@ -38,8 +39,13 @@ class CollectionManager extends React.Component{
         type: 'POST',
         data: {card: {name: name}},
         success: (response) => {
-          console.log('success!', response);
-          Turbolinks.visit('/my_collection');
+          //console.log('success!', response);
+          if (response.success) {
+            Turbolinks.visit('/my_collection');  
+          }
+          else {
+            console.log('error in creating card!', response.errors)
+          }
         },
         error: (response) => {
           console.log('fail', response.responseText);
@@ -52,13 +58,13 @@ class CollectionManager extends React.Component{
     )
   }
   deleteCard(card_id,e){
-    console.log('removing from trading pool', card_id);
+    //console.log('removing from trading pool', card_id);
     $.ajax({ 
       url: '/cards/',  
       type: 'DELETE',
       data: {card: {id: card_id}}, 
       success: (response) => { 
-        console.log('successfully removed item'); 
+        //console.log('successfully removed item'); 
         Turbolinks.visit('/my_collection');
       }, 
       error: (response) => {

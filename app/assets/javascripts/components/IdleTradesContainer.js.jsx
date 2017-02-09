@@ -35,14 +35,14 @@ class IdleTradesContainer extends React.Component{
     )    
   }
   cancelTrade(tradeId) {
-    console.log('cancelling trade', tradeId);
+    //console.log('cancelling trade', tradeId);
     $.ajax(
       {
         url: '/cancel_trade',
         type: 'PATCH',
         data: {trade: {trade_id: tradeId}},
         success: (response) => {
-          console.log('what response?',response);
+          //console.log('what response?',response);
           if (response.success) {
             Turbolinks.visit('/');
           }

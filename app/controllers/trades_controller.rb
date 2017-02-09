@@ -1,20 +1,24 @@
 class TradesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :cancel_trade, :fetch_pending_trades, :accept_trade]
+  before_action :authenticate_user!, except: []
 
   def create
-    desired_card = Card.find(create_trade_params[:proposer_card_id])
-    if desired_card.is_available
-      params_plus_responder = create_trade_params.merge(responder_id: desired_card.user.id)
-      @trade = Trade.create(params_plus_responder)
-      if @trade.valid?
-        desired_card.update_attributes(is_available: false)
-        flash[:notice] = 'Trade request sent!'
-        render json: {:success => "success", :status_code => "200"}
+    desired_card = Card.find_by(id: create_trade_params[:proposer_card_id])
+    if desired_card
+      if desired_card.is_available
+        params_plus_responder = create_trade_params.merge(responder_id: desired_card.user.id)
+        @trade = Trade.create(params_plus_responder)
+        if @trade.valid?
+          desired_card.update_attributes(is_available: false)
+          flash[:notice] = 'Trade request sent!'
+          render json: {:success => "success", :status_code => "200"}
+        else
+          render json: {:errors => "error!", :status_code => :unprocessable_entity}
+        end
       else
-        render json: {:errors => "error!", :status_code => :unprocessable_entity}
+        render json: {:errors => "that card is not available!", :status_code => :unprocessable_entity}
       end
     else
-      render json: {:errors => "that card is not available!", :status_code => :unprocessable_entity}
+      render json: {:errors => "error!", :status_code => :unprocessable_entity}
     end
   end
 
@@ -40,7 +44,6 @@ class TradesController < ApplicationController
 
   def accept_trade
     accept_trade = accept_trade_params.merge(user: current_user)
-    puts "params going to model: #{accept_trade}"
     trade = Trade.accept(accept_trade)
     if trade
       render json:{:success => "success", :status_code => "200"}
