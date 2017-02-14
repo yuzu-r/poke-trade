@@ -136,17 +136,19 @@ img.scaled{
 .react-autosuggest__container {
   position: relative;
   display: inline-block;
+  height: 38px;
 }
 
 .react-autosuggest__input {
   width: 240px;
-  height: 30px;
-  padding: 10px 20px;
+  height: 38px;
+  padding: 4px 20px;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .react-autosuggest__input:focus {
@@ -185,7 +187,7 @@ img.scaled{
 
 .react-autosuggest__suggestion {
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 4px 20px;
 }
 
 .react-autosuggest__suggestion:not(:first-child) {
