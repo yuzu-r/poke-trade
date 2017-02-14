@@ -33,7 +33,8 @@ class PendingResponseContainer extends React.Component{
         success: (response) => {
           //console.log('what response?',response);
           if (response.success) {
-            Turbolinks.visit('/');
+            //Turbolinks.visit('/');
+            window.location = '/';
           }
           else {
             console.log('something went wrong while cancelling trade');

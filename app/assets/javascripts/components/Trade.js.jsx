@@ -20,7 +20,8 @@ class Trade extends React.Component{
         data: {trade: {trade_id: tradeId, responder_card_id: desiredCard}},
         success: (response) => {
           if (response.success) {
-            Turbolinks.visit('/');
+            //Turbolinks.visit('/');
+            window.location = '/';
           }
         },
         error: (response) => {

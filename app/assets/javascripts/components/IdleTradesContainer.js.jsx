@@ -44,7 +44,8 @@ class IdleTradesContainer extends React.Component{
         success: (response) => {
           //console.log('what response?',response);
           if (response.success) {
-            Turbolinks.visit('/');
+            //Turbolinks.visit('/');
+            window.location = '/';
           }
         },
         fail: (response) => {

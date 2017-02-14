@@ -41,7 +41,8 @@ class CollectionManager extends React.Component{
         success: (response) => {
           //console.log('success!', response);
           if (response.success) {
-            Turbolinks.visit('/my_collection');  
+            //Turbolinks.visit('/my_collection');  
+            window.location='/my_collection';
           }
           else {
             console.log('error in creating card!', response.errors)
@@ -65,7 +66,8 @@ class CollectionManager extends React.Component{
       data: {card: {id: card_id}}, 
       success: (response) => { 
         //console.log('successfully removed item'); 
-        Turbolinks.visit('/my_collection');
+        //Turbolinks.visit('/my_collection');
+        window.location='/my_collection';
       }, 
       error: (response) => {
         if (response.status == 401) {

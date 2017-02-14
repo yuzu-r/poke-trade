@@ -45,7 +45,8 @@ class TradePool extends React.Component{
               },
         success: (response) => {
           //console.log('trade create?',response) // visit the trade pool whether success/fail
-          Turbolinks.visit('/');
+          //Turbolinks.visit('/');
+          window.location = '/';
         },
         error: (response) => {
           console.log('trade create fail', response.responseText, response.status);
