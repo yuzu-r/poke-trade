@@ -1,3 +1,3 @@
-class Deck < ActiveRecord::Base
+class Deck < ApplicationRecord
 
 end

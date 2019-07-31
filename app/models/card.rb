@@ -1,4 +1,4 @@
-class Card < ActiveRecord::Base
+class Card < ApplicationRecord
   belongs_to :user
     
   scope :offered, -> {select('id, deck_id, user_id')

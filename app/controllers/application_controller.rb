@@ -10,21 +10,21 @@ class ApplicationController < ActionController::Base
 
   protected
     def configure_permitted_parameters
-     devise_parameter_sanitizer.for(:sign_in)        << :username
-     devise_parameter_sanitizer.for(:sign_up)        << :username
-     devise_parameter_sanitizer.for(:account_update) << :username
-     devise_parameter_sanitizer.for(:sign_in)        << :bio
-     devise_parameter_sanitizer.for(:sign_up)        << :bio
-     devise_parameter_sanitizer.for(:account_update) << :bio
-     devise_parameter_sanitizer.for(:sign_in)        << :city
-     devise_parameter_sanitizer.for(:sign_up)        << :city
-     devise_parameter_sanitizer.for(:account_update) << :city
-     devise_parameter_sanitizer.for(:sign_in)        << :state
-     devise_parameter_sanitizer.for(:sign_up)        << :state
-     devise_parameter_sanitizer.for(:account_update) << :state
-     devise_parameter_sanitizer.for(:sign_in)        << :country
-     devise_parameter_sanitizer.for(:sign_up)        << :country
-     devise_parameter_sanitizer.for(:account_update) << :country
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:bio])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:bio])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:bio])
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:city])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:city])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:city])
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:state])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:state])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:state])
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:country])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:country])
+     devise_parameter_sanitizer.permit(:account_update, keys: [:country])
 
     end
 

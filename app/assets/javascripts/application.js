@@ -18,7 +18,7 @@
 //= require components
 //= require_tree .
 //= require bootstrap-sprockets
-//= require ./vendors/react-autosuggest-v8.0.0.min
+//= require ./vendors/react-autosuggest-v9.4.3.min.js
 //= require ./vendors/polyfill.js
 ReactRailsUJS.handleEvent('turbolinks:before-cache', function() {
   window.ReactRailsUJS.unmountComponents();

@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+#gem 'rails', '4.2.6'
+ruby '2.5.5'
+
+gem 'rails', '5.0.7.2'
+
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -23,7 +27,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
-  gem "factory_girl_rails", "~> 4.0" 
+  #gem "factory_girl_rails", "~> 4.0" 
 end
 
 group :development do
@@ -34,3 +38,4 @@ group :development do
   gem 'spring'
 end
 
+# https://unpkg.com/browse/react-autosuggest@9.4.3/dist/standalone/autosuggest.min.js
